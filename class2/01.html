@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 测试vue的过滤器的操作实现逻辑，对应的过滤数据的工具-->
+    <div id="app">
+        <!--相关的大写过滤操作-->
+        <p> {{message.toUpperCase()}}</p>
+        <!--相关的小写过滤操作-->
+        <p> {{message.toLowerCase()}}</p>
+        <!--测试过滤器的相关操作实现-->
+        <p>{{num>10?'大于':'小于'}}</p>
+         <!--测试过滤器的相关操作实现-->
+         <p>{{num |   demo }}</p> 
+    </div>
+    
+    <script  src="vue.js"></script>
+    <script>
+        // 注册过滤器的入口程序,第一个参数对应的是注册器的名字，第二个对应的是回调参数
+        Vue.filter("demo",function(n){
+            return n<=10?'小于等于':'大于';
+        });
+            var app = new Vue({
+                el: '#app',
+                data: {
+                   message:"hello world!",
+                   num:'10'
+                }
+            })
+    </script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 实行了双向绑定的操作实现的，model标签可以实现input个message之间的双向的绑定的操作实现的，v-model的双向绑定对应的是使用相关的监听的模式实现相关的操作的-->
+    <div id="app"  >
+        <p>{{message}}</p>
+        <!--<button v-on:click="test" >点击按钮</button>，一般的推荐使用简单的@进行相关的绑定操作实现的-->
+        <button @click="test" >点击按钮</button>
+    </div>
+
+    <script  src="vue.js"></script>
+    <script>
+            var app = new Vue({
+                    el: '#app',
+                    data: {
+                        message: 'Hello Vue!'
+                    },
+                   //  对应是一个object的，不是相关的数组的，所有的data中的数据，在methods中是可以通过this进行相关的修改的
+                    methods:
+                        {
+                            test:  function(){
+                                this.message="hello  vue.js";
+                            }
+                        }
+                })
+    </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      .red {
+          color: red
+      }
+      .blue{
+          background: blue
+      }
+    </style>
+</head>
+<body>
+    <!-- 实行了双向绑定的操作实现的，model标签可以实现input个message之间的双向的绑定的操作实现的，v-model的双向绑定对应的是使用相关的监听的模式实现相关的操作的-->
+    <!--vue.js 主要的目标是实现相关的数据渲染的问题实现的-->
+    <div id="app"  >
+       <strong v-bind:class="json">这是一段红色的字体信息</strong>
+       <button  @click="addBlue">增加蓝色</button>
+    </div>
+
+    <script  src="vue.js"></script>
+    <script>
+            var app = new Vue({
+                    el: '#app',
+                    data: {
+                      json:{
+                          red:true,
+                          blue:true
+                      }
+                    },
+                    methods:{
+                        addBlue:  function(){
+                            this.json.red=!this.json.red,
+                            this.json.blue=!this.json.blue
+                        }
+                    }
+                })
+    </script>
+</body>
+</html>

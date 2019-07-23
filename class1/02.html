@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+     <!--  v-bind 对应的是vue的绑定指令操作的，使用的时候不需要{{}}，在div下面的需要{{}}的-->
+        <div id="app-2">
+            <span v-bind:title="message"  v-show="true">
+                鼠标悬停几秒钟查看此处动态绑定的提示信息！
+            </span>
+        </div>
+        <script src="vue.js"></script>
+        
+        <script>
+                var app2 = new Vue({
+                    el: '#app-2',
+                    data: {   //  所有渲染的數據都是位於data對象中的。
+                        message: '页面加载于 ' + new Date().toLocaleString()
+                    }
+                }) 
+        </script>
+</body>
+</html>

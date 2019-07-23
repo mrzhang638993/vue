@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!--测试的是vue的钩子函数信息-->
+    <div id="app">
+           {{msg}}
+    </div>
+    
+    <script  src="vue.js"></script>
+    <script>
+            var app = new Vue({
+                el: '#app',
+                data: {
+                    msg:"Gello"
+                },
+                //  创建的时候对应的调用的
+                created:function(){
+                  console.log("created");
+                },
+                //  创建之前进行的调用的
+                beforeCreate:function(){
+                    console.log("before");
+                },
+                //  渲染之前
+                beforeMount:  function(){
+                    console.log("渲染之前");
+                },
+                mounted:  function(){
+                    console.log("渲染之后");
+                },
+                beforeUpdate:function(){
+                    console.log("before   update");
+                }
+
+            })
+    </script>
+</body>
+</html>

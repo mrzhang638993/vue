@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!--此处存在事件冒泡机制的，对应的体现的是，首先执行相关的show方法，然后执行相关的box方法-->
+    <!--事件点击操作的时候，对应的是存在相关的事件冒泡的，可以有效的防止事件冒泡产生的异常信息的操作的-->
+    <div id="app">
+        <div  >
+            <button @click.stop="show">展示</button>
+            <button @click.stop="showBtn($event)">展示2</button>
+            <input  type="text"  @keydown.stop="test"/>
+            <!--测试按键的按键码信息-->
+            <input  type="text"  @keydown.stop="keycode($event)"/>
+            <!--测试回车信息的操作-->
+            <input  type="text"  @keydown.13="keyEnter($event)"/>
+            <!--操作回车的相关的操作实现-->
+            <input  type="text"  @keydown.enter="keyEnt($event)"/>
+            <!--鼠标键盘左键的相关操作-->
+            <input   type="text"  @keydown.left="keyLeft()" />
+            <!--鼠标右键点击相关操作-->
+            <input  type="text" @keydown.right="keyRight()">
+        </div>
+    </div>
+
+    <script  src="vue.js"></script>
+    <script>
+            var app = new Vue({
+                el: '#app',
+                data: {
+                   
+                },
+                methods:{
+                    box:  function(){
+                        alert("box");
+                    },
+                    show:  function(ev){
+                        alert("show");
+                        //ev.cancelBuddle=true;
+                    },
+                    showBtn:   function(){
+                        alert("展示2");
+                        //ev.cancelBuddle = true;
+                    },
+                    test:   function(){
+                        console.log("哈哈");
+                    },
+                    keycode:  function(ev){
+                        console.log(ev.keyCode);
+                    },
+                    keyEnter: function(){
+                        console.log("您执行额回车的相关操作");
+                    },
+                    keyEnt:  function(ev){
+                      alert("hihi");
+                    },
+                    //  对应的是指向左右的鼠标按钮的显示的
+                    keyLeft:  function(){
+                        alert("您执行了左键的点击操作");
+                    },
+                    //  对应的是指向左右的鼠标按钮的显示的
+                    keyRight:   function(){
+                        alert("您执行了右键的相关的操作实现的");
+                    }
+                }
+            })
+    </script>
+</body>
+</html>

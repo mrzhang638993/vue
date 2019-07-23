@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+       .red{
+           color: red
+       }
+    </style>
+</head>
+<body>
+    <div id="app"  >
+        <p  v-bind:title="message" v-bind:style="{color:'red'}">{{message}}</p>
+        <p  v-bind:title="message" v-bind:style="[obj,bg]"  v-model="message">{{message}}</p>
+        <p  v-bind:title="message" v-bind:style="composite"  v-model="message">{{message}}</p>
+    </div>
+
+    <script  src="vue.js"></script>
+    <script>
+            var app = new Vue({
+                el: '#app',
+                data: {
+                    message: 'Hello Vue!',
+                    obj:{
+                        color:'red'
+                    },
+                    bg:{
+                        background:'blue'
+                    },
+                    composite:{
+                        color:'red',
+                        background:'blue'
+                    }
+                }
+            })
+    </script>
+</body>
+</html>

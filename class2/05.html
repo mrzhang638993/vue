@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!--自定义vue的相关指令-->
+    <div id="app">
+        <!--<span v-red>红色文字</span>-->
+        <!--<input type="text" v-focus />-->
+        <!--设置一个拖拽按钮-->
+       <!-- <div v-drag  :style="{width:'100px',height:'100px',background:'blue',position:'absolute',left:'0px',top:'0px'}" >Box</div>-->
+       <!--<div  v-drag :style='[json]'>box</div>-->
+       <p>{{msg}}</p>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        //  下面的this对应的是windows对象的
+        // 技巧：当想知道对应的方法中存在哪些对象的时候，对应的可以使用如下的方式function(a,b,c,d,e,f){console.log(a,b,c,d,e,f)}等进行相关的操作
+      /* Vue.directive("red", function (el, tags) {
+            el.style.color = "red";
+            el.style.background = "blue"
+        })*/
+
+        // 自定义指令信息，对应的是全局注册指令，实际的使用中一般的推荐使用局部的指令信息的
+        /*Vue.directive('focus', {
+            inserted: function (el) {
+                //  对元素进行计较操作，比如百度输入的时候对应的也是存在聚焦的操作的
+                el.focus();
+            }
+        })*/
+
+        Vue.directive('drag',function(el){
+            var  divobj=el;
+            divobj.onmousedown=function(event){
+                 var  disx=event.clientX-divobj.offsetLeft;
+                 var  disy=event.clientY-divobj.offsetTop;
+                 divobj.onmousemove=function(event){
+                     divobj.style.left=event.clientX-disx+"px";
+                     divobj.style.top=event.clientY-disy+"px";
+                 }
+             },
+             document.onmouseup=function(){
+                document.onmousemove=null;
+                document.onmouseup=null;   
+             }
+        })
+        // vue对象需要实例化之后才可以执行相关的操作的。指令的作用可以使用来进行相关的扩展操作的。
+      /* let app= new Vue({
+            el: '#app',
+            data: {
+                msg: "hello world!",
+                num: '10',
+                json:{
+                    width:'100px',
+                    height:'100px',
+                    background:'blue',
+                    position:'absolute',
+                    left:'0px',
+                    top:'0px'
+                }
+            },
+            //  对应的是局部注册的指令,只能在当前实例中进行注册管理
+            directives: {
+                focus: {
+                    // 指令的定义
+                    inserted: function (el) {
+                        el.focus()
+                    }
+                }
+            }
+        })*/
+
+        //  vue 挂载的方式一
+       /* new  Vue({
+               data:{
+                   msg:"good"
+               }
+        }).$mount("#app")
+        */
+       
+        //  vue的挂载方式二
+        let   vm=new  Vue({
+               data:{
+                   msg:"hello"
+               }
+        })
+        vm.$mount("#app")  //对应的是手动挂载对象
+        
+        //  监听msg的变化
+        vm.$watch('msg',function(){
+            //  监听msg的变化，出现变化之后对应的话会提示，在alert弹出之前是不会修改数值的。
+                 alert("发生变化了")
+        });
+
+        //  alert，comfire对应的都是存在页面阻断作用的，需要进行关注。
+        //  vue对象创建之后，可以使用如下的方式来调用和使用的
+        //app.$el.style.color='red';
+        //app.msg="newVal";
+        document.onclick=function(){
+            alert("click");
+            vm.msg="点击之后的内容"
+        }
+
+    </script>
+</body>
+
+</html>
