@@ -17,7 +17,7 @@
 </head>
 
 <body>
-    <!--animated  对应的是动画库-->
+    <!--animated  对应的是动画库,对应的任何框架都是存在生命周期的，生命周期对应的存在很多-->
 
     <div id="app">
         <button @click="show=!show">点击按钮</button>
@@ -41,23 +41,23 @@
                 show:true
             },
             methods:{
-                beforeEnter(){
-
+                beforeEnter:function(){
+                    console.log("beforeEnter");
                 },
-                enter(){
-
+                enter:function(){
+                    console.log("enter");
                 },
-                afterEnter(){
-
+                afterEnter:function(){
+                    console.log("afterEnter");
                 },
-                beforeLeave(){
-
+                beforeLeave:function(){
+                    console.log("beforeLeave");
                 },
-                leave(){
-
+                leave:function(){
+                    console.log("leave");
                 },
-                afterLeave(){
-                    
+                afterLeave:function(){
+                    console.log("afterLeave");
                 }
             }
         })
