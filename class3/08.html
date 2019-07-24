@@ -9,12 +9,28 @@
 <body>
     
     <div id="app">
-         
+        <!--点击切换组件.实现智能点击切换组件信息-->
+         <input  type="button"   @click="show='one'"   value="One组件" />
+         <input  type="button"   @click="show='two'"   value="Two组件" />
+         <component :is="show"></component>
     </div>
 
     <script  src="js/vue.js" ></script>
     <script>
-         
+          let app = new Vue({
+            el: "#app",
+            data: {
+                show: "one"
+            },
+            components:{
+               'one':{
+                    template:"<h1>我是one组件</h1>"
+               },
+               'two':{
+                    template:"<h1>我是two组件</h1>"
+               }
+            }
+        })
     </script>
 </body>
 </html>
