@@ -21,7 +21,13 @@
 
     <div id="app">
         <button @click="show=!show">点击按钮</button>
-        <transition  name="fade"  enter-active-class="bounceInLeft"   leave-active-class="bounceInRight">
+        <transition  @before-enter="beforeEnter" 
+        @enter="enter"
+        @after-enter="afterEnter"
+        @before-leave="beforeLeave"
+        @after-leave="afterLeave"
+        @leave="leave"
+        name="fade"  enter-active-class="bounceInLeft"   leave-active-class="bounceInRight">
            <!-- class="animated"  必须增加，否则没有相关的动画效果-->
             <div v-show="show"  class="animated">Hello world~!</div>
         </transition>
@@ -33,6 +39,26 @@
             el: "#app",
             data: {
                 show:true
+            },
+            methods:{
+                beforeEnter(){
+
+                },
+                enter(){
+
+                },
+                afterEnter(){
+
+                },
+                beforeLeave(){
+
+                },
+                leave(){
+
+                },
+                afterLeave(){
+                    
+                }
             }
         })
     </script>
