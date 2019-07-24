@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>组件</title>
+</head>
+
+<body>
+
+    <div id="app">
+        <!--组件的使用需要进行相关的隔离操作的-->
+        <!--<button @click="num+=1">点击{{num}}</button>-->
+        <counter></counter>
+    </div>
+
+
+    <script src="js/vue.js"></script>
+    <script>
+
+        /*Vue.component("counter",  {
+            template: "<div>hello  world~!</div>"
+        })*/
+        let app = new Vue({
+            el: "#app",
+            data: {
+                num: 0
+            },
+            components:{
+                "counter":{
+                    template:  
+                     `<div>
+                        <p> hello  world ~</p>
+                        <p> hello  world ~</p>
+                     </div>`
+                }
+            }
+        })
+
+    </script>
+</body>
+
+</html>
