@@ -20,7 +20,7 @@
             <div>
                 <span>我是子组件对象</span>
                 <input  type="button"  value="按钮"  @click="change()"/>
-                <strong>{{msg}}</strong>
+                <strong>{{str}}</strong>
             </div>
       </template>
     <script src="js/vue.js"></script>
@@ -34,12 +34,20 @@
                  num:0
              },
             components:{
+                //  单独的改变组件的信息
                 "child-com":{
+                    data(){
+                        return   {str:""};
+                    },
+                    mounted(){
+                        //  对应的只是会在创建的时候，对应的发生相关的调用机制实现的。
+                        this.str=this.msg;
+                    },
                     template:"#child",
                     props:['msg'],
                     methods:{
                         change(){
-                               this.msg="子对象的内容发生了改变";
+                               this.str="子对象的内容发生了改变";
                         }
                     }
                 }

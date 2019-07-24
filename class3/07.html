@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+
+      <div id="app">
+          <com-a></com-a>
+          <com-b></com-b>
+          <com-c></com-c>
+      </div>
+
+      <template  id="child">
+            
+      </template>
+    <script src="js/vue.js"></script>
+    <script>
+
+          var   vm= new  Vue();
+        /*  A组件的相关操作*/
+         var  A={
+            template:
+            `
+                 <div>
+                     <span>我是A组件对象</span>
+                     <input  type="button"  value="把A组件传递给C组件"  @click="send">
+                 </div> 
+            `,
+            methods:{
+                send(){
+                    //  emit  帮助来进行事件触发操作。
+                   vm.$emit("a-msg",this.a);
+                }
+            },
+            data(){
+                return {
+                    a:"我是A数据"
+                }
+            }
+         };
+        
+         /*  B组件的相关操作*/
+         var  B={
+            template:
+            `
+                 <div>
+                     <span>我是B组件对象</span>
+                     <input  type="button"  value="把B组件传递给C组件"  @click="send">
+                 </div> 
+            `,
+            methods:{
+                send(){
+                    //  注册相关的b-msg名称的事件信息
+                    vm.$emit("b-msg",this.b);
+                }
+            },
+            data(){
+                return {
+                    b:"我是B数据"
+                }
+            }
+         };
+        
+        
+         /*  C组件的相关操作*/
+         var  C={
+            template:
+            `
+                 <div>
+                     <span>我是C组件对象</span>
+                     <p>接收过来的A的数据为:{{a}}</p>
+                     <p>接收过来的B的数据为:{{b}}</p>
+                     <input  type="button"  value="把A组件传递给C组件"  @click="send">
+                 </div> 
+            `,
+            mounted(){
+                // 监听A的变化
+                var _this=this;
+                vm.$on("a-msg",function(a){
+                    _this.a=a;
+                })
+
+                //  监听B的变化
+                vm.$on("b-msg",function(b){
+                    _this.b=b;
+                })
+            },
+            methods:{
+                send(){
+                    vm.$emit("c-msg",this.a);
+                }
+            },
+            data(){
+                return {
+                    a:'',
+                    b:'',
+                    c:"我是C数据"
+                }
+            }
+         };
+
+         let app = new Vue({
+            el: "#app",
+            data: {
+                num: 0
+            },
+            components:{
+               'com-a':A,
+               'com-b':B,
+               'com-c':C
+            }
+        })
+
+      
+    </script>
+</body>
+</html>
