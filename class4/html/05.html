@@ -18,8 +18,21 @@
         <p>Using mustaches: {{ rawHtml }}</p>
         <p>Using v-html directive: <span v-html="rawHtml"></span></p>
 
-        <!--{{msg}} 这种语法不能够作用到html标签上面的的,使用到html标签上面的话,需要使用到v-bind指令-->
-        
+        <!--{{msg}} 这种语法不能够作用到html标签上面的的,使用到html标签上面的话,需要使用到v-bind指令,
+           对应的将vue的属性绑定到html属性上面执行相关的操作.
+        -->
+        <div v-bind:id="dynamicId"></div>
+        <button v-bind:disabled="isButtonDisabled">Button</button>
+
+        <!--vue  提供的相关的js支持-->
+        </br>
+        <span v-bind:msg="number+1" >{{number+1}} </span>
+        </br>
+        <span v-bind:msg="ok ? 'YES' : 'NO'" >{{ok ? 'YES' : 'NO'}} </span>
+        </br>
+        <span  v-bind:msg=" message.split('').reverse().join('') ">{{ message.split('').reverse().join('') }}</span>
+        </br>
+        <div v-bind:id="'list-' + id">{{'list-' + id}}</div>
     </div>
 
     <script  src="../js/vue.js"></script>
@@ -29,7 +42,13 @@
              el:"#app",
              data:{
                   msg:"hello world",
-                  rawHtml:"<span  style='color:red'>this  should  be  red </span>"
+                  rawHtml:"<span  style='color:red'>this  should  be  red </span>",
+                  dynamicId:"hello",
+                  isButtonDisabled:false,
+                  number:0,
+                  ok:true,
+                  message:"guo jia zhong meili",
+                  id:1
              }
          })
     </script>
