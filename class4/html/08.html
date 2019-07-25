@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id="app">
+        <!--测试条件渲染操作-->
+        <h1 v-if="awesome">Vue is awesome!</h1>
+        <h1 v-else>Oh no one</h1>
+        <my-template></my-template>
+        <div v-if="Math.random() > 0.5">
+                Now you see me
+        </div>
+        <div v-else>
+            Now you don't
+        </div>
+
+        <!--多模块的条件渲染-->
+        <div v-if="type === 'A'">
+                A
+              </div>
+              <div v-else-if="type === 'B'">
+                B
+              </div>
+              <div v-else-if="type === 'C'">
+                C
+              </div>
+              <div v-else>
+                Not A/B/C
+              </div>
+        <!--测试模板切换-->
+        </br>
+        <div v-if="loginType === 'username'">
+            <username-login></username-login>
+        </div>
+        <div v-else>
+            <email-login></email-login>
+        </div>
+        </br>
+        <button @click="changeLoginType">登录操作按钮</button>
+      </div>
+
+    <!--进行模板渲染控制,模板对应的需要使用的,模板的使用必须要存在根元素的,不能碎片化的堆叠-->
+    <template  id="template" v-if="ok">
+        <div id="my">
+           <h1>Title</h1>
+           <p>Paragraph 1</p>
+           <p>Paragraph 2</p>
+       </div>
+    </template>
+
+    <!-- 进行模板之间的切换-->
+    <template  id="username" >
+        <div>
+            <label>Username</label>
+             <input placeholder="Enter your username" key="username-input">
+        </div> 
+    </template>
+    <template  id="email" >
+        <div>
+            <label>Email</label>
+            <input placeholder="Enter your email address" key="email-input">
+        </div>
+    </template>
+
+    <script src="../js/vue.js"></script>
+
+    <script>
+       let  app= new Vue({
+            el:"#app",
+            data:{
+                awesome:true,
+                type:'A',
+                loginType:'username'
+            },
+           components:{
+               'my-template':{
+                    template:"#template"
+               },
+               'username-login':{
+                    template:"#username"
+               },
+               'email-login':{
+                   template:"#email"
+               }
+           } ,
+           methods: {
+                changeLoginType:function(){
+                    this.loginType='email'
+                }
+           },
+       })
+    </script>
+</body>
+</html>
