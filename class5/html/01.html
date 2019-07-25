@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue-router</title>
+</head>
+<body>
+     
+    <div id="app">
+          <h1>Router 1</h1>
+          <nav>
+              <!--使用router-link组件来实现导航操作。将需要跳转的路由写入到to中,在页面上会替换为a标签-->
+              <router-link  to="/home">Home</router-link>
+              <router-link  to="/subPage">SubPage</router-link>
+              <router-view></router-view>
+          </nav>
+    </div>
+
+    <template id="home">
+          <p>Home</p>
+    </template>
+
+    <template id="subPage">
+            <p>SubPage</p>
+    </template>
+
+    <script  src="../js/vue.js"></script>
+    <script  src="../js/vue-router.js"></script>
+
+    <script>
+
+        let  Home={
+            template:"#home"
+        };
+
+        let  SubPage={
+            template:"#subPage"
+        };
+        //  路由就是通过用户点击不同的路由，加载不同的组件
+        //  对应的每一个路由，都应该映射一个组件
+        let  routers=[
+            {path:"/home",component:Home},
+            {path:"/subPage",component:SubPage}
+        ];
+
+        let   router=new VueRouter({
+                routes:routers
+        });
+
+       const  app= new  Vue({router:router}).$mount("#app");
+
+    </script>
+</body>
+</html>
