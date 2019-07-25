@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>嵌套路由</title>
+</head>
+<body>
+     
+    <div id="app">
+          <h1>Router 3</h1>
+          <div>
+              <!--使用router-link组件来实现导航操作。将需要跳转的路由写入到to中,在页面上会替换为a标签-->
+              <router-link  to="/user/foo">Foo</router-link>
+              <router-link  to="/user/foo/profile">Profile</router-link>
+              <router-link  to="/user/foo/profile/test">Test</router-link>
+              <router-link  to="/user/foo/profile/acceptance">Acceptance</router-link>
+              <router-link  to="/user/foo/posts">Posts</router-link>
+          </div>
+          <!--对应的是需要启动路由设置和操作管理-->
+          <router-view></router-view>
+    </div>
+
+    <!--
+    <template id="userHome">
+          <p>User:{{$route.params.id}}</p>
+    </template>
+   -->
+   
+   <template  id="user">
+    <div>
+        <p>会员中心首页</p>
+        <!--对应的指向相关的子路由信息-->
+        <router-view></router-view>
+    </div>
+  </template>
+   <template  id="userHome">
+          <p>会员中心</p>
+   </template>
+   <template  id="userProfile">
+       <div>
+         <p>会员概况</p>
+         <router-view></router-view>
+      </div>
+  </template>
+  <template  id="userPosts">
+        <p>会员信息</p>
+  </template>
+  <template  id="test">
+        <p>测试信息</p>
+  </template>
+  <template  id="acceptance">
+        <p>验收信息</p>
+  </template>
+   
+
+    <script  src="../js/vue.js"></script>
+    <script  src="../js/vue-router.js"></script>
+
+    <script>
+       
+       //  定义了3个组件
+       let  User={
+          template:"#user"
+       };
+
+       let  UserHome={
+        template:"#userHome"
+        };
+
+        let  UserProfile={
+            template:"#userProfile"
+        };
+        
+        let  UserPosts={
+            template:"#userPosts"
+        };
+
+        let  Test={
+            template:"#test"
+        };
+
+        let  Acceptance={
+            template:"#acceptance"
+        };
+
+        let   router=new VueRouter({
+            routes:[
+                {path:"/user/:id",component:User,
+                 children:
+                 [
+                     {path:'',component:UserHome},
+                     {path:'profile',component:UserProfile,
+                        children:[
+                            {path:'test',component:Test},
+                            {path:'acceptance',component:Acceptance}
+                        ]
+                    },
+                     {path:'posts',component:UserPosts}
+                 ]
+               }
+            ]
+        });
+
+       const  app= new  Vue({router:router}).$mount("#app");
+    </script>
+</body>
+</html>
