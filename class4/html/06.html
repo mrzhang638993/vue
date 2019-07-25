@@ -24,6 +24,9 @@
     <!--测试计算属性操作-->
     <div id="demo">{{ fullName }}</div>
 
+    <!--执行相关的侦听器的相关操作-->
+    
+
     <script   src="../js/vue.js"></script>
     <script>
          /*  let  app=new Vue({
@@ -60,6 +63,7 @@
                   //fullName: 'Foo Bar'
                },
                watch:{
+                   //  此处,不推荐使用属性监听,推荐使用计算属性来进行相关的操作
                  /* firstName:function(newVal,oldVal){
                         this.fullName=newVal+" "+this.lastName;
                    },
@@ -69,8 +73,21 @@
                    */
                },
                computed:{
-                    fullName:  function(){
+                    /*fullName:  function(){
                         return  this.firstName+" "+this.lastName
+                    }*/
+                    //  提供计算属性的getter和setter方法
+                    fullName:{
+                        //  getter 
+                        get: function () {
+                              return this.firstName + ' ' + this.lastName
+                        },
+                        // setter
+                        set: function (newValue) {
+                            var names = newValue.split(' ')
+                            this.firstName = names[0]
+                            this.lastName = names[names.length - 1]
+                        }
                     }
                }
            })
