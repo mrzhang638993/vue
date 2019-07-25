@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id="app">
+        <!--<div v-bind:class="{ active: isActive }"></div>-->
+        <!-- 多属性的绑定操作-->
+        <!-- <div class="static" v-bind:class="{ active: isActive, 'text-danger': hasError} </div>  -->
+        <!-- 还可以使用如下的操作方式-->
+        <!--<div   class="static" v-bind:class="classObject"></div>-->
+
+        <!--使用数组进行数据渲染操作-->
+        <div v-bind:class="[activeClass, errorClass]"></div>
+        
+        <!--三目表达式切换显示的class属性信息-->
+        <div v-bind:class="[isActive ? activeClass : '', errorClass]"></div>
+        <!-- 对应的可以简写为如下的从操作方式-->
+        <div v-bind:class="[{ active: isActive }, errorClass]"></div>
+
+        <!--使用注册组件进行相关操作实现,对应的传递数值信息可以获取到相关的数值信息进行相关的操作-->
+        <my-component class="baz boo" ></my-component>
+
+        <!--会自带的默认的还有原来的foo bar属性信息的-->
+        <my-component v-bind:class="{ active: isActive }"></my-component>
+        </br>
+        <!--  测试内联样式-->
+        <div v-bind:style="{ color: activeColor, fontSize: fontSize + 'px' }">Hello  World </div>
+        </br>
+        <div v-bind:style="styleObject">使用对象进行相关绑定操作</div>
+
+        <!--多样式进行绑定操作-->
+        <div v-bind:style="[baseStyles, overridingStyles]">多样式绑定操作</div>
+
+    </div>
+
+    <script src="../js/vue.js"></script>
+    <script>
+
+        //  注册全局组件进行相关操作
+        Vue.component('my-component', {
+           template: '<p class="foo bar">Hi</p>'
+        })
+
+           let  app= new Vue({
+               el:"#app",
+               data:{
+                  activeClass:'active',
+                  errorClass:'text-danger',
+                  isActive:true,
+                  activeColor:"red",
+                  fontSize:20,
+                  styleObject:{
+                      // 对应的值html支持的属性的
+                    color:'red',
+                    fontSize:'20px'
+                  },
+                  baseStyles:{
+                    color:'red',
+                    fontSize:'20px'
+                  },
+                  overridingStyles:{
+                      background:'blue'
+                  }
+                 // isActive: true,
+                  // hasError: true,
+                 // isActive: true,
+                 // error: null,
+                  //  可以将数据对象转化为一个统一的整体,进行相关的替换操作
+                  /*classObject:{
+                    active: true,
+                    'text-danger':true
+                  }*/
+               },
+               computed:{
+                   //  返回计算属性对象
+                   /*classObject:function(){
+                        return {
+                            //  active  并且没有相关的error信息才会展示,有错误才会提示错误类型
+                              active: this.isActive && !this.error,
+                              'text-danger': this.error && this.error.type === 'fatal'
+                           } 
+                   }*/
+
+               }
+           })
+    </script>
+</body>
+</html>
