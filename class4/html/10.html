@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>v-for</title>
+</head>
+<body>
+    
+    <div id="app">
+            <ul id="example-1">
+                <li v-for="item in items">
+                    {{ item.message }}
+                </li>
+            </ul> 
+            <!-- 使用of操作来代替in实现for循环的遍历操作-->
+            <ul id="example-3">
+                    <li v-for="item of items">
+                        {{ item.message }}
+                    </li>
+                </ul> 
+            <ul id="example-2">
+                <li v-for="(item, index) in items">
+                    {{ parentMessage }} - {{ index }} - {{ item.message }}
+                </li>
+            </ul>
+
+            <!--使用for循环来遍历对象的属性信息-->
+            <ul id="v-for-object" class="demo">
+                <li v-for="value in object">
+                    {{ value }}
+                </li>
+            </ul>
+            
+            </br>
+            <!--遍历对象的属性和值信息-->
+            <div v-for="(value, name) in object">
+                {{ name }}: {{ value }}
+            </div>
+            </br>
+            <!--使用三个参数来进行相关的遍历操作实现-->
+            <div v-for="(value, name, index) in object">
+                {{ index }}. {{ name }}: {{ value }}
+            </div>
+            </br>
+    </div>
+
+
+    <script src="../js/vue.js"></script>
+    <script>
+        let  app=new Vue({
+            el:"#app",
+            data:{
+                parentMessage: 'Parent',
+                //  for循环可以访问上级属性名称信息
+                items:
+                [
+                   { message: 'Foo' },
+                   { message: 'Bar' }
+                ],
+                object: {
+                    title: 'How to do lists in Vue',
+                    author: 'Jane Doe',
+                    publishedAt: '2016-04-10'
+               }
+            }
+        })
+    </script>
+</body>
+</html>
