@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id="app">
+         
+    </div>
+
+
+    <script src="../js/vue.js"></script>
+    <script>
+          let  app=  new Vue({
+              el:"#app",
+              data:{
+                  a:1
+              },
+              //  vue 实例创建之后对应的进行的操作
+              created:function(){
+                  console.log(this.a);
+              },
+              //  对应的元素挂在之后执行的相关的操作
+              mounted:function(){
+                 console.log(document.getElementById("app"));
+              },
+              //   数据更新到最后dom需要重新进行渲染操作
+              updated:function(){
+                console.log("数据进行了更新操作"+this.a);
+              },
+              // vue实例销毁之后才会执行的操作
+              destroyed:function(){
+                 console.log("vue实例被销毁了");
+              }
+          })
+    </script>
+</body>
+</html>

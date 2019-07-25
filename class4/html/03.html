@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id="app">
+        <p>{{ foo }}</p>
+        <!-- 这里的 `foo` 不会更新！ -->
+        <button v-on:click="foo = 'baz'">Change it</button>
+    </div>
+
+
+    <script   src="../js/vue.js"></script>
+    <script>
+          var   obj={
+              foo:"bar"
+          }
+          //  冻结vue的响应式数据变化
+          //Object.freeze(obj);
+
+           let   app=new Vue({
+               el:"#app",
+               data:obj
+           })
+           
+
+           //  下面显示的是对于vue实例的属性和方法进行操作的内容
+           console.log(app.$data==obj);
+           console.log(app.$el==document.getElementById("app"));
+        
+           app.$watch('foo', function (newValue, oldValue) {
+                 // 这个回调将在 `vm.a` 改变后调用
+                 console.log("改变之前的数值"+oldValue);
+                 console.log("改变之后的数值"+newValue);
+             })
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id="app">
+        <!-- 数据绑定操作-->
+        <!--<span>Message: {{ msg }}</span>-->
+        <!--使用一次性修改的数据值信息,只是渲染一次的-->
+        <span v-once>这个将不会改变: {{ msg }}</span>
+
+        <!-- 将内容解析为html规范-->
+        <p>Using mustaches: {{ rawHtml }}</p>
+        <p>Using v-html directive: <span v-html="rawHtml"></span></p>
+
+        <!--{{msg}} 这种语法不能够作用到html标签上面的的,使用到html标签上面的话,需要使用到v-bind指令-->
+        
+    </div>
+
+    <script  src="../js/vue.js"></script>
+
+    <script>
+         let app= new Vue({
+             el:"#app",
+             data:{
+                  msg:"hello world",
+                  rawHtml:"<span  style='color:red'>this  should  be  red </span>"
+             }
+         })
+    </script>
+</body>
+</html>
