@@ -4,30 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>编程式路由</title>
+    <title>命名路由</title>
 </head>
 <body>
      
     <div id="app">
-          <h1>Router 4</h1>
+          <h1>Router 5</h1>
           <div>
-              <!--使用router-link组件来实现导航操作。将需要跳转的路由写入到to中,在页面上会替换为a标签-->
-              <router-link  to="/user/foo">Foo</router-link>
+              <!--可以通过一个名称表示来进行路由-->
+              <router-link  :to="{name:'home'}">Foo</router-link>
+              <router-link  :to="{name:'subPage'}">SubPage</router-link>
+              <router-link  :to="{name:'nav',params:{id:123}}">Nav</router-link>
           </div>
           <!--对应的是需要启动路由设置和操作管理-->
           <router-view></router-view>
     </div>
    
-   <template  id="user">
+   <template  id="home">
         <div>
-            <p>Users:</p>
+            <p>首页</p>
             <!--对应的指向相关的子路由信息-->
-            <router-view></router-view>
+            <!--<router-view></router-view>-->
         </div>
   </template>
-   <template  id="register">
-       <p>注册</p>
+   <template  id="subPage">
+       <p>子页</p>
    </template>
+   <template  id="nav">
+        <p>菜单</p>
+    </template>
 
     <script  src="../js/vue.js"></script>
     <script  src="../js/vue-router.js"></script>
@@ -35,18 +40,23 @@
     <script>
        
        //  定义了3个组件
-       let  User={
-          template:"#user"
+       let  Home={
+          template:"#home"
        };
        
-       let  Register={
-          template:"#register"
+       let  SubPage={
+          template:"#subPage"
+       };
+
+       let  Nav={
+          template:"#nav"
        };
 
         let   router=new VueRouter({
             routes:[
-                {path:"/user/:id",component:User},
-                {path:"/register",component:Register}
+                {path:"/",name:"home",component:Home},
+                {path:"/subPage",name:"subPage",component:SubPage},
+                {path:"/nav",name:"nav",component:Nav}
             ]
         });
 
@@ -54,7 +64,7 @@
         //  path：对应的是路由信息，query对应的是查询的字段
         // 可以通过router.push来跳转路由，对应的效果和router-link效果是一样的，这个操作会向浏览器的history栈增加一条记录
        //  相关的登录操作可以实现如下的操作的，可以使用到。
-        router.push({path:"/register",query:{plan:'private'}})
+       // router.push({path:"/register",query:{plan:'private'}})
     </script>
 </body>
 </html>
