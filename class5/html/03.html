@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>嵌套路由</title>
+</head>
+<body>
+     
+    <div id="app">
+          <h1>Router 3</h1>
+          <div>
+              <!--使用router-link组件来实现导航操作。将需要跳转的路由写入到to中,在页面上会替换为a标签-->
+              <router-link  to="/user/think">Think</router-link>
+              <router-link  to="/user/dnedu">Dnedu</router-link>
+          </div>
+          <router-view></router-view>
+    </div>
+
+    <template id="user">
+          <!-- 可以获取路由参数id-->
+          <p>User:{{$route.params.id}}</p>
+    </template>
+
+   
+
+    <script  src="../js/vue.js"></script>
+    <script  src="../js/vue-router.js"></script>
+
+    <script>
+       
+       let  User={
+            template:"#user",
+            watch:{
+                //  监听路由属性的改变
+                '$route'(to,from){
+                    console.log('从'+from.params.id+"到"+to.params.id);
+                }
+            }
+        };
+
+        let   router=new VueRouter({
+            routes:[
+                {path:"/user/:id",component:User}
+            ]
+        });
+
+
+       const  app= new  Vue({router:router}).$mount("#app");
+
+    </script>
+</body>
+</html>
