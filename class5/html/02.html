@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>vue-router</title>
+    <title>动态路由</title>
 </head>
 <body>
      
@@ -19,7 +19,8 @@
     </div>
 
     <template id="user">
-          <p>User:</p>
+          <!-- 可以获取路由参数id-->
+          <p>User:{{$route.params.id}}</p>
     </template>
 
    
@@ -30,7 +31,13 @@
     <script>
        
        let  User={
-            template:"#user"
+            template:"#user",
+            watch:{
+                //  监听路由属性的改变
+                '$route'(to,from){
+                    console.log('从'+from.params.id+"到"+to.params.id);
+                }
+            }
         };
 
         let   router=new VueRouter({
