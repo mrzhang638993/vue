@@ -44,7 +44,13 @@
 
         <!--  Vue  动态参数-->
         </br>
-        <a v-bind:[attributeName]="url"> {{attributeName}} </a>
+        <a v-bind:[attributename]="url"> {{attributename}} </a>
+        </br>
+        <!-- 动态属性的绑定操作,属性发生变化,对应的事件也是可以发生变化的,唯一需要注意的是不要使用attributeName  这样的操作,无法识别而且会报错-->
+        <input v-on:[eventname]="focus"/> 
+
+        <!--表单的相关操作实现-->
+        <form v-on:submit.prevent="onSubmit">表单提交相关操作</form>
     </div>
     </br>
     <script  src="../js/vue.js"></script>
@@ -63,11 +69,19 @@
                   id:1,
                   seen:true,
                   url:"http://www.baidu.com",
-                  attributeName:"href"
+                  //attributeName:"href",
+                  attributename:'href',
+                  eventname:"focus"
              },
              methods:{
                 doSomething:function(){
                     console.log("html属性的改变触发了事件");
+                },
+                focus:function(){
+                    console.log("执行了focus相关知识和想法");
+                },
+                onSubmit:function(){
+                    console.log("执行提交的相关操作和实现");
                 }
              }
          })
