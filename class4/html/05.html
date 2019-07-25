@@ -33,8 +33,20 @@
         <span  v-bind:msg=" message.split('').reverse().join('') ">{{ message.split('').reverse().join('') }}</span>
         </br>
         <div v-bind:id="'list-' + id">{{'list-' + id}}</div>
-    </div>
 
+        <!--vue 指令操作-->
+        <p v-if="seen">现在你看到我了</p>
+        <!-- 可以将vue的数值绑定到html的属性-->
+        <a v-bind:href="url">跳转到html</a>
+        <!--  点击dom对象触发事件-->
+        </br>
+        <a v-on:click="doSomething">测试点击事件</a>
+
+        <!--  Vue  动态参数-->
+        </br>
+        <a v-bind:[attributeName]="url"> {{attributeName}} </a>
+    </div>
+    </br>
     <script  src="../js/vue.js"></script>
 
     <script>
@@ -48,7 +60,15 @@
                   number:0,
                   ok:true,
                   message:"guo jia zhong meili",
-                  id:1
+                  id:1,
+                  seen:true,
+                  url:"http://www.baidu.com",
+                  attributeName:"href"
+             },
+             methods:{
+                doSomething:function(){
+                    console.log("html属性的改变触发了事件");
+                }
              }
          })
     </script>
