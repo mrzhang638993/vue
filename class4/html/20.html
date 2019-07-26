@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <div id="app">
+        <blog-post
+            v-for="post in posts"
+            v-bind:key="post.id"
+            v-bind:post="post"
+          ></blog-post>
+    </div>
+
+    <div id="blog-posts-events-demo">
+        <div :style="{ fontSize: postFontSize + 'em' }">
+            <blog-posts
+                v-for="post in posts"
+                v-bind:key="post.id"
+                v-bind:post="post"
+                v-on:enlarge-text="postFontSize += $event"
+            ></blog-posts>
+            <!-- 上面的v-on对应的是父组件监听子组件的变化-->
+        </div>
+    </div>
+
+
+    <!--父组件监听子组件的事件,对应的触父组件的方法-->
+    <div id="blog-posts-events-demo1">
+            <div :style="{ fontSize: postFontSize + 'em' }">
+                <blog-posts
+                    v-for="post in posts"
+                    v-bind:key="post.id"
+                    v-bind:post="post"
+                    v-on:enlarge-text="onEnlargeText"
+                ></blog-posts>
+                <!-- 上面的v-on对应的是父组件监听子组件的变化-->
+            </div>
+        </div>
+    
+
+
+    <script   src="../js/vue.js"></script>
+
+    <script>
+          Vue.component('blog-post', {
+              props: ['post'],
+              template: `
+               <div class="blog-post">
+               <h3>{{ post.title }}</h3>
+               <h3>{{ post.publishedAt }}</h3>
+               <h3>{{ post.comments }}</h3>
+               <div v-html="post.content"></div>
+               </div>
+               `
+          })
+
+          //  整个对应的是逻辑是子组件注册事件,父组件监听对应的事件然后执行相关的渲染操作实现,还可以使用事件来传递参数
+          Vue.component('blog-posts', {
+              //  接受父组件的post属性,传递给子组件,实现渲染操作实现
+              // v-on:click="$emit('enlarge-text')"  子组件注册事件enlarge-text
+              props: ['post'],
+              template: `
+                 <div class="blog-post">
+                 <h3>{{ post.title }}</h3>
+                 <button v-on:click="$emit('enlarge-text',0.5)">
+                     Enlarge text
+                 </button>
+                <div v-html="post.content"></div>
+                </div>
+                `
+          })
+
+          /*new  Vue({
+               el:"#app",
+               data:{
+                posts: [
+                    { id: 1, title: 'My journey with Vue' ,content:"first  word",publishedAt:"20190726",comments:"很好"},
+                    { id: 2, title: 'Blogging with Vue' ,content:"second  word",publishedAt:"20190727",comments:"你很好"},
+                    { id: 3, title: 'Why Vue is so fun' ,content:"three  word" ,publishedAt:"20190728",comments:"你非常好"}
+                ],
+                postFontSize: 1
+               }
+           })*/
+
+
+          /* new  Vue({
+               el:"#blog-posts-events-demo",
+               data:{
+                posts: [
+                    { id: 1, title: 'My journey with Vue' ,content:"first  word",publishedAt:"20190726",comments:"很好"},
+                    { id: 2, title: 'Blogging with Vue' ,content:"second  word",publishedAt:"20190727",comments:"你很好"},
+                    { id: 3, title: 'Why Vue is so fun' ,content:"three  word" ,publishedAt:"20190728",comments:"你非常好"}
+                ],
+                postFontSize: 1
+               }
+           })*/
+
+           new  Vue({
+               el:"#blog-posts-events-demo1",
+               data:{
+                posts: [
+                    { id: 1, title: 'My journey with Vue' ,content:"first  word",publishedAt:"20190726",comments:"很好"},
+                    { id: 2, title: 'Blogging with Vue' ,content:"second  word",publishedAt:"20190727",comments:"你很好"},
+                    { id: 3, title: 'Why Vue is so fun' ,content:"three  word" ,publishedAt:"20190728",comments:"你非常好"}
+                ],
+                postFontSize: 1
+               },
+               methods:{
+                    onEnlargeText:function(enlargeAmount){
+                        alert(enlargeAmount);
+                        this.postFontSize += enlargeAmount
+                    }
+               }
+           })
+    </script>
+</body>
+</html>
