@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue组件操作</title>
+</head>
+<body>
+    
+        <div id="components-demo">
+                <button-counter></button-counter>
+                <button-counter></button-counter>
+                <!-- 使用相关的props对应的可以实现从父组件到子组件的数据传递-->
+                <blog-post title="My journey with Vue"></blog-post>
+                <blog-post title="Blogging with Vue"></blog-post>
+                <blog-post title="Why Vue is so fun"></blog-post>
+        </div>
+
+    </br> 
+    </br>
+    </br>
+    </br>
+    </br>
+    </br>
+         <div id="blog-post-demo">
+             <!-- 对应的都是将父组件的数值传递给子组件实现操作-->
+            <blog-post
+                v-for="post in posts"
+                v-bind:key="post.id"
+                v-bind:title="post.title"
+            ></blog-post>
+         </div>
+
+
+
+    <script  src="../js/vue.js"></script>
+           
+    <script>
+        //  定义全局组件
+        Vue.component('button-counter', {
+            //  data对应的必须要是函数
+            data: function () {
+            return {
+                count: 0
+           }
+       },
+           template: '<button v-on:click="count++">You clicked me {{ count }} times.</button>'
+      })
+
+      Vue.component('blog-post', {
+          props: ['title'],
+          template: '<h3>{{ title }}</h3>'
+      })
+
+      new Vue({ el: '#components-demo' })
+
+      new Vue({
+           el: '#blog-post-demo',
+          data: {
+               posts: [
+               { id: 1, title: 'My journey with Vue' },
+               { id: 2, title: 'Blogging with Vue' },
+               { id: 3, title: 'Why Vue is so fun' }
+           ]
+        }
+    })
+
+    </script>
+</body>
+</html>
