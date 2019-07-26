@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>动态组件</title>
+</head>
+<body>
+    
+    <div id="app">
+        <!--可以实现动态组件的切换操作-->
+        <component v-bind:is="currentTabComponent"></component>
+    </div>
+
+    <script  src="../js/vue.js"></script>
+
+    <script>
+         Vue.component('home',{
+            template:"<button>Home</button>"
+         })
+
+         Vue.component('posts',{
+            template:"<button>Posts</button>"
+         })
+
+         Vue.component('archive',{
+            template:"<button>Archive</button>"
+         })
+        
+         let  app=new  Vue({
+            el:"#app",
+            data:{
+                currentTabComponent:''
+            }
+        })
+
+        //  使用这样的方式可以实现相关的切换组件的操作
+        app.currentTabComponent='home';
+        app.currentTabComponent='posts';
+        app.currentTabComponent='archive';
+
+    </script>
+</body>
+</html>
