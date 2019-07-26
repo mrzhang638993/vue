@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id="app">
+       <!--vue对于修改数组下标以及数组长度的操作是不会被监控到的-->
+        <div v-for="item in items" v-bind:key="item.id">
+              {{item.text}}
+        </div>
+    </div>
+
+
+    <script src="../js/vue.js"></script>
+
+    <script>
+          let  app= new Vue({
+              el:"#app",
+              data:{
+                  items:[
+                      {text:"good"},
+                      {text:"baby"},
+                      {text:"boy"}
+                  ]
+              }
+          })
+          // app.items[0]={text:"world"}; 操作是不会监控到的.
+          // app.items[0].text="test  many";  是可以被监控到的
+          // app.items.length=9;  也是不会被监控到的
+
+        //  下面的操作对应的会触发响应式的操作更新
+        Vue.set(app.items, 0, {text:"baby"});
+        //app.$set(app.items, 0, {text:"mrzhang"});
+        //  下面的操作也是会触发响应式的更新操作
+        app.items.splice(0,1,{text:"china"});
+        //app.items.splice(2);   可以实现动态的切割数组的长度要素
+        
+
+
+    </script>
+</body>
+</html>

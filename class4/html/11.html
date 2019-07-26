@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id="app">
+        <!--实现for循环根据index实时更新,默认的是就地更新(对应的是原位置更新)-->
+        <div v-for="item in items" v-bind:key="item.id">
+            <!-- 内容 -->
+            {{item.text}}
+        </div>
+        <div v-for="item in newItems" v-bind:key="item.id">
+                <!-- 内容 -->
+                {{item.text}}
+            </div>
+    </div>
+
+
+    <script src="../js/vue.js"></script>
+
+    <script>
+          let  app= new Vue({
+              el:"#app",
+              data:{
+                  items:[
+                      {text:"good"},
+                      {text:"baby"},
+                      {text:"boy"}
+                  ],
+                  newItems:[]
+              }
+          })
+
+          //  可以针对于数组进行相关的改变,vue提供了相关的监听侦测的方式
+          //  增加元素 app.items.push({text:"Many"});
+          //  尾部弹出元素 app.items.pop();
+          //   首部弹出元素 app.items.shift();
+          //   获取剩余元素的个数 app.items.unshift();
+          //  splice()  sort(), reverse()--倒序排序  上面的方法都是会改变原有的数组
+
+          //  下面的这些方法,对应的不会改变原有的数组
+          //  使用右侧的方法可以获取到一个新的数组而不会改变原来的数组 app.newItems=app.items.filter(function(item){return item.text.match(/good/)});
+          // concat() 和 slice() 也和上面的效果一样
+          
+
+
+    </script>
+</body>
+</html>

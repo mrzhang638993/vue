@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>对于数组的属性更新</title>
+</head>
+<body>
+    
+    <div id="app">
+         <ol>
+            <li  v-for="item in userProfile">{{item}}</li>
+         </ol>
+    </div>
+
+
+    <script src="../js/vue.js"></script>
+
+    <script>
+          let  app= new Vue({
+              el:"#app",
+              //  vue 不允许动态的增加根级别的动态顺序的,可以针对于对象进行相关的操作
+              data:{
+                userProfile: {
+                    name: 'Anika'
+                }
+              }
+          })
+     // Vue.set(app.userProfile,'age',27); 
+     //  或者是采用如下的方式实现相关的代码操作实践
+     //  app.$set(app.userProfile,'age',28); 对应的也可以实现相关的对象属性的动态变化
+     //  还可以实现如下的对象属性的动态变化和操作更新
+     // app.userProfile=Object.assign({},app.userProfile,{age:28,favoriteColor:"red"}); 
+
+    </script>
+</body>
+</html>
