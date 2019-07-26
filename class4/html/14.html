@@ -10,7 +10,7 @@
     
     <div id="app">
          <ol>
-            <li  v-for="item in userProfile">{{item}}</li>
+            <li  v-for="item in numbers">{{item}}</li>
          </ol>
     </div>
 
@@ -21,10 +21,15 @@
           let  app= new Vue({
               el:"#app",
               data:{
-                userProfile: {
-                    name: 'Anika'
+                numbers: [ 1, 2, 3, 4, 5 ]
+              },
+              computed: {
+                evenNumbers: function () {
+                    return this.numbers.filter(function (number) {
+                        return number % 2 === 0
+                    })
                 }
-              }
+            }
           })
     </script>
 </body>
