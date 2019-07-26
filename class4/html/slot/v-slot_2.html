@@ -25,15 +25,15 @@
   <template id="two">
     <div>
       <nav>
-        <slot name="nav"></slot>
+        <slot name="nav"  :value="two"></slot>
       </nav>
 
       <main>
-        <slot name="main"></slot>
+        <slot name="main" :value="two"></slot>
       </main>
 
       <footer>
-        <slot name="footer"></slot>
+        <slot name="footer" :value="two"></slot>
       </footer>
 
     </div>

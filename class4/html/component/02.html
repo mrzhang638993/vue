@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <div id="app">
+         <component-a></component-a>
+         <component-b></component-b>
+         <component-c>
+               
+         </component-c>
+    </div>
+
+    <script   src="../../js/vue.js"></script>
+
+    <script>
+
+        //  需要注意的是局部注册的组件彼此之间是相互隔离的.在一个局部注册的组件中注册另外的局部组件的话,需要在其内部注册.
+          var ComponentA = { 
+            template:'<div><p>我是component-a</p></div>'
+          }
+          var ComponentB = { 
+             template:'<div><p>我是component-b</p></div>'
+          }
+          var ComponentC = { 
+            template:'<div><p>我是component-c</p></div>',
+            //  注册不产生任何的作用
+            components:{
+                'component-a': ComponentA
+            }
+          }
+
+
+
+          new Vue({
+            el: '#app',
+            //  组件的局部注册
+            components: {
+                'component-a': ComponentA,
+                'component-b': ComponentB,
+                'component-c': ComponentC
+            }
+          })
+
+    </script>
+</body>
+</html>
