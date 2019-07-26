@@ -10,8 +10,29 @@
     
     <div id="app">
          <ol>
-            <li  v-for="item in numbers">{{item}}</li>
+            <li  v-for="item in evenNumbers">{{item}}</li>
          </ol>
+         <ol>
+            <li v-for="n in even(numbers)">{{ n }}</li>
+         </ol>
+         <div>
+            <span v-for="n in 10">{{ n }} </span>
+        </div>
+        <ul>
+            <template v-for="item in items">
+                <li>{{ item.msg }}</li>
+                <!--<li class="divider" role="presentation"></li>-->
+            </template>
+        </ul>
+
+        <template id="template">
+            <!--<div>
+                <p>测试template</p>
+            </div>-->
+        </template>
+        <!--在组件上面使用v-for实现相关的代码操作,怎么在组件上面渲染v-for的相关操作-->
+        <my-component  v-for="item in items" :key="item.id"></my-component>
+         
     </div>
 
 
@@ -21,7 +42,12 @@
           let  app= new Vue({
               el:"#app",
               data:{
-                numbers: [ 1, 2, 3, 4, 5 ]
+                numbers: [ 1, 2, 3, 4, 5 ],
+                items:[
+                    {msg:"good"},
+                    {msg:"many"},
+                    {msg:"hello"}
+                ]
               },
               computed: {
                 evenNumbers: function () {
@@ -29,6 +55,18 @@
                         return number % 2 === 0
                     })
                 }
+            },
+            methods:{
+               even: function (numbers) {
+                    return numbers.filter(function (number) {
+                    return number % 2 === 0
+                 })
+              }
+            },
+            components:{
+                 'my-component':{
+                    template:"#template"
+                 }
             }
           })
     </script>
