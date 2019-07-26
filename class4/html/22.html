@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+   <!--<div id="app">
+        <alert-box>
+            Something bad happened.
+        </alert-box>
+    </div>-->
+
+    <div id="app18">
+        <my-component18>
+            <template scope="props"><p>来自父组件的内容</p><p>{{props.msg}}</p></template>
+        <my-component18>
+    </div>
+
+    <script src="../js/vue.js"></script>
+   
+    <script>
+        Vue.component('alert-box', {
+           template: `
+              <div class="demo-alert-box">
+              <strong>Error!</strong>
+              <slot></slot>
+              </div>
+            `
+        })
+
+        Vue.component('my-component18',
+        {template: '<div class="container"><slot msg="来自子组件的内容"></slot></div>'});
+
+
+        var app18 = new Vue({el: '#app18'});
+        
+       /* let  app=new  Vue({
+            el:"#app",
+            data:{
+                searchText:''
+            }
+        })*/
+
+    </script>
+</body>
+</html>
