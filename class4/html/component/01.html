@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>组件全局注册</title>
+</head>
+<body>
+     
+   <div id="app">
+       <my-component-name></my-component-name>
+       <component-a></component-a>
+       <component-b></component-b>
+       <component-c></component-c>
+   </div>
+
+    <script   src="../../js/vue.js"></script>
+           
+    <script>
+         // 全局注册组件
+         Vue.component('my-component-name', 
+            { 
+                template:'<div><p>Hello   World!</p></div>'
+            }
+         )
+
+         Vue.component('component-a', { 
+            template:'<div><p>我是component-a</p></div>'
+         })
+         Vue.component('component-b', { 
+            template:'<div><p>我是component-b</p></div>'
+          })
+         Vue.component('component-c', { 
+            template:'<div><p>我是component-c</p></div>'
+          })
+
+         let  app=new  Vue({
+             el:"#app"
+         })
+
+    </script>
+</body>
+</html>
