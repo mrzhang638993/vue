@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+     <!--子组件发布事件,父组件消费事件-->
+     <div id="app">
+            <custom-input
+            v-bind:value="searchText"
+            v-on:input="searchText = $event"
+          ></custom-input>
+     </div>
+
+
+
+    <script  src="../js/vue.js"></script>
+
+    <script>
+        
+
+        Vue.component('custom-input', {
+            props: ['value'],
+            template: `
+                <input
+                v-bind:value="value"
+                v-on:input="$emit('input', $event.target.value)"
+            >
+            `
+      })
+
+
+      let  app=new  Vue({
+               el:"#app",
+               data:{
+                  searchText:''
+               }
+           })
+     // app.searchText='hello world';  可以触发相关的改变
+    </script>
+</body>
+</html>
