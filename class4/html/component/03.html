@@ -11,6 +11,22 @@
     <div id="app">
         <!--父组件传递数据给子组件-->
         <blog-post post-title="hello!"></blog-post>
+        
+        <!--<blog-posts  v-for="prop  in props "
+           v-bind:title="prop.title"
+           v-bind:likes="prop.likes"
+           v-bind:ispublished="prop.isPublished"
+           v-bind:commentids="prop.commentIds"
+           v-bind:author="prop.author"
+        ></blog-posts>-->
+
+        <blog-posts  v-for="prop  in props "
+           v-bind:title="prop.title"
+           v-bind:likes="prop.likes"
+           v-bind:ispublished="prop.isPublished"
+           v-bind:commentids="prop.commentIds"
+           v-bind:author="prop.author"
+        ></blog-posts>
     </div>
 
 
@@ -23,8 +39,29 @@
             template: '<h3>{{ postTitle }}</h3>'
          })
 
+
+         Vue.component('blog-posts', {
+            // 在 JavaScript 中是 camelCase 的,需要注意传递的时候存在的大小写问题
+            //props: ['title', 'likes', 'ispublished', 'commentids', 'author'],
+            props: {
+                title:String,
+                likes:String,
+                ispublished:String,
+                commentids:Number,
+                author:String
+            },
+            template: '<h3>{{ title }}===>{{likes}}====>{{ispublished}}====>{{commentids}}====>{{author}}</h3>'
+         })
+
          new  Vue({
-             el:"#app"
+             el:"#app",
+             data:{
+                 props:[
+                     {title:"china",likes:"good",isPublished:"20190726",commentIds:1,author:"mrzhang"},
+                     {title:"beijin",likes:"very",isPublished:"20190727",commentIds:2,author:"hosts"},
+                     {title:"taiwan",likes:"nice",isPublished:"20190728",commentIds:3,author:"ip"}
+                 ]
+             }
          })
 
     </script>
