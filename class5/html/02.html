@@ -14,6 +14,7 @@
               <!--使用router-link组件来实现导航操作。将需要跳转的路由写入到to中,在页面上会替换为a标签-->
               <router-link  to="/user/think">Think</router-link>
               <router-link  to="/user/dnedu">Dnedu</router-link>
+              <router-link  to="/user/dnedu/guojia">Dnedu</router-link>
           </div>
           <router-view></router-view>
     </div>
@@ -42,7 +43,10 @@
 
         let   router=new VueRouter({
             routes:[
-                {path:"/user/:id",component:User}
+                //  对应的匹配两级路径
+               {path:"/user/:id",component:User},
+                //  对应的匹配三级路径
+                {path:"/user/:id/:id",component:User}
             ]
         });
 
