@@ -9,14 +9,14 @@
 <body>
      
     <div id="app">
-          <h1>Router 5</h1>
+          <h1>Router 6</h1>
           <div>
-              <!--可以通过一个名称表示来进行路由-->
-              <router-link  :to="{name:'home'}">Foo</router-link>
-              <router-link  :to="{name:'subPage'}">SubPage</router-link>
-              <router-link  :to="{name:'nav',params:{id:123}}">Nav</router-link>
+              <router-link  to="/">Home</router-link>
+              <!--对应的创建相关的试图信息进行操作展示-->
+              <router-view  name="sub">SubPage</router-view>
+              <router-view  name="nav">Navicat</router-view>
           </div>
-          <!--对应的是需要启动路由设置和操作管理-->
+
           <router-view></router-view>
     </div>
    
@@ -27,7 +27,7 @@
             <!--<router-view></router-view>-->
         </div>
   </template>
-   <template  id="subPage">
+   <template  id="sub">
        <p>子页</p>
    </template>
    <template  id="nav">
@@ -45,7 +45,7 @@
        };
        
        let  SubPage={
-          template:"#subPage"
+          template:"#sub"
        };
 
        let  Nav={
@@ -54,9 +54,11 @@
 
         let   router=new VueRouter({
             routes:[
-                {path:"/",name:"home",component:Home},
-                {path:"/subPage",name:"subPage",component:SubPage},
-                {path:"/nav",name:"nav",component:Nav}
+                {path:"/",components:{
+                    default:Home,
+                    sub:SubPage,
+                    nav:Nav
+                }}
             ]
         });
 
