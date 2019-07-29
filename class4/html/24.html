@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div  id="app">
+         <my-template></my-template>
+    </div>
+
+    <template id="template">
+        <div>
+            <p>Hello  World</p>
+        </div>
+    </template>
+
+    <script src="../js/vue.js"></script>
+
+    <script>
+        //  执行相关的实例化的操作方法
+        new Vue({
+            data: {
+                foo: 1
+            },
+            computed: {
+                bar: function () {
+                    /* ... */ }
+            },
+            methods: {
+                baz: function () {
+                    /* ... */ }
+            },
+            components:{
+                'my-template':{
+                    template:"#template"
+                }
+            }
+        }).$mount("#app");
+    </script>
+</body>
+
+</html>
