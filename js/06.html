@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        <!--函数对应的是存在输入和输出的，输出对应的可以是直接值或者是存在于内存中的操作的。或者是没有返回值的.
+           js 中，如果函数没有返回书写返回值的情况下，对应的默认的返回值是undefined，java中对应的默认的返回值是void的
+           函数对应的只能够在调用的时候才可以执行的，在不调用的时候对应的是不会执行的。系统本身定义了相关的函数的，alert对应的是
+           系统函数之一的。
+           return对应的只能够出现在函数中的，在其他的情况中是不能使用的。
+
+           js中不同类型的对象之间的相加的操作会转化成为字符串的拼接的操作(toString()转化为字符串进行相关的操作的)
+           js中Object对应的返回的字符串是[Object  Object]
+           
+           js中不同类型的对象之间的相减的操作，对应的是转化为数字之后进行相加减的操作进行实现的。
+        -->
+    <script>
+        
+           function   sum(a,b){
+               return  a+b;
+           }
+
+             //alert(sum(sum(5,6),7));
+              function  testReturn(){
+                  alert("hello");
+              };
+
+              //var  dest=testReturn(); //  对应的会输出2个数值，一个是hello，另外的一个对应的是undefined
+             // alert(dest);
+
+                var   a=10;
+                var  b;
+                alert(b=a);  // 表达式的数值为10 ，输出为10
+                //alert(b);
+    </script>
+
+
+</body>
+</html>
