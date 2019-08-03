@@ -12,31 +12,50 @@
     <script>
         //  对应的是选择分支结构
         //  if(true){
-
         //  }else{
-
         //  }
-        
         //  下面对应的是switch....case的相关的数据结构
-        var  num=prompt("请输入方向","请输入0-3之间的数值");
-        switch(num){
-            case  "0":{
-                alert("hello"+0);
-                break;
-            };
-            case "1":{
-                alert("hello"+1);
-                break;
-            };
-            case "2":{
-                alert("hello"+2);
-                break;
-            };
+        //  javascript中首字母大写的函数是存在特殊的含义的，需要进行关注。自定义的函数千万不需要使用首字母大写的操作。
+        var  num=prompt("请输入方向","请输入0-3之间的数值"); //  对应的输入的参数类型是string的
+        // switch(num){
+        //     case  "0":{
+        //         alert("hello"+0);
+        //         break;
+        //     };
+        //     case "1":{
+        //         alert("hello"+1);
+        //         break;
+        //     };
+        //     case "2":{
+        //         alert("hello"+2);
+        //         break;
+        //     };
+        //     default:{
+        //         alert("输入的参数不在合适的范围的");
+        //     }
+        // }    
+        //  进行相关的类型转化信息操作,解决问题的能力，对应的决定了相关的能力的高度的。NaN对应的是特殊的number类型，null对应的是特殊的类型
+        //   switch...case对应的是执行相关的数据相等的判断逻辑的，判断变量是否等于指定的数值的。对于常量的使用，可以使用到相关的美剧机制的。
+        var  dest=Number(num);
+        switch(dest){
+            //  可以减少判断的判断信息的，提高程序的运行的效率和相关的特性的
             default:{
-                alert("输入的参数不在合适的范围的");
+                alert("输入信息有误:");
+                break;
+            }
+            case 0:{
+                alert("输入的信息是hello:"+0);
+                break;
+            };
+            case 1:{
+                alert("输入的信息是hello:"+1);
+                break;
+            };
+            case 2:{
+                alert("输入的信息是hello:"+2);
+                break;
             }
         }
-
     </script>
 </body>
 </html>
