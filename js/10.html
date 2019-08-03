@@ -8,11 +8,32 @@
 </head>
 <body>
     
-    <!--  es5对应的都是使用eval来解析相关的js字符串的，es5之后,对应的都是使用JSON.stringfy()实现json字符串信息-->
+    <!--  es5对应的都是使用eval来解析相关的js字符串的，es5之后,对应的都是使用JSON.stringfy()实现json字符串信息
+          while 循环对应的是用来反复的执行相同的事件信息的。
+          while对应的时先判断后执行的，do-while对应的是先执行后判断的。
+          while和do-while的使用场景信息：
+          1）利于游戏中，需要首先完成游戏之后才进行后续的判断是否继续完游戏；
+          2）
+
+        属性的名称可以是数字，但是一般的不会这么使用的。
+    -->
 
     <script>
          
-     
+        var   dir;
+
+        do{
+            dir=Number(prompt("请输入信息","输入的信息和内容是"));
+        }while(!(dir>=0&&dir<=3));
+
+        var  DIRC={
+            0:"上",
+            1:"下",
+            2:"左",
+            3:"右"
+        }
+
+        alert(DIRC[dir]);
 
     </script>
 </body>
