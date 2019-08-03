@@ -33,16 +33,16 @@
 
         var  i=0;j=0;
         var  res=(++i&&j--)||i--||++j;
-        alert(res); // 1
-        alert(i); //  0  
-        alert(j);  //  -1
+//  alert(res); // 1
+      //  alert(i); //  0  
+       // alert(j);  //  -1
 
 
         var  i=0;j=0;
         var  res=(++i&&j--)||--i||++j;
-        alert(res); // 0
-        alert(i); //  0  
-        alert(j);  //  0
+        //alert(res); // 0
+       // alert(i); //  0  
+        //alert(j);  //  0
   
 
         function  action(){
@@ -50,25 +50,25 @@
         }
         var  i=0;j=0;
         var  res=(++i&&j--)&&(action||++j);
-        alert(res); // 0
-        alert(i); //  1  
-        alert(j);  //  -1
+        //alert(res); // 0
+       // alert(i); //  1  
+       // alert(j);  //  -1
         
 
        // 函数对应的是true的
         var  i=0;j=0;
         var  res=(++i&&--j)&&(action||++j);
-        alert(res); // action
-        alert(i); //  1  
-        alert(j);  //  -1
+       // alert(res); // action
+       // alert(i); //  1  
+        //alert(j);  //  -1
 
 
        //  action()代表的是函数的调用的，这里面的结果是undefined，对应的为false的。
         var  i=0;j=0;
         var  res=(++i&&--j)&&(action()||++j);
-        alert(res); // 0
-        alert(i); //  1  
-        alert(j);  //  0
+       // alert(res); // 0
+       // alert(i); //  1  
+       // alert(j);  //  0
 
         function  action1(a){
             return a ;
@@ -77,17 +77,17 @@
         // 对应的没有传递参数的话，对应的是undefined的，所以action1()返回的任然是undefined的，结果为false。
         var  i=0;j=0;
         var  res=(++i&&--j)&&(action1()||++j);
-        alert(res); // 0
-        alert(i); //  1  
-        alert(j);  //  0
+      //  alert(res); // 0
+      //  alert(i); //  1  
+      //  alert(j);  //  0
 
 
 
         var  i=0;j=0;
         var  res=(++i&&--j)&&(action1(j)||++j);
-        alert(res); // -1
-        alert(i); //  1  
-        alert(j);  //  -1
+       // alert(res); // -1
+       // alert(i); //  1  
+       // alert(j);  //  -1
 
 
 
@@ -98,9 +98,9 @@
 
         var  i=0;j=0;
         var  res=(++i&&--j)&&(action1(j)||++j);
-        alert(res); // 0
-        alert(i); //  1  
-        alert(j);  //  0
+        //alert(res); // 0
+       // alert(i); //  1  
+       // alert(j);  //  0
 
 
         function  action3(a){
@@ -109,10 +109,18 @@
 
         var  i=0;j=1;
         var  res=(++i&&--j)&&({}||++j);
-        alert(res); // {}
-        alert(i); //  1  
-        alert(j);  //  0
+       // alert(res); // {}
+       // alert(i); //  1  
+       // alert(j);  //  0
+    //  项目中的使用方式如下：
 
+    //  可以避免相关的参数没有赋值的相关的操作的。
+    function   action(ops){
+        var  options=ops||{name:"无名氏"}
+        return options;
+    }
+    var  obj=action();
+    alert(obj.name);
 
     </script>
 </body>
