@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+
+
+
+    <script>
+        //  测试if选择分支结构
+         function   sayHello(sex){
+             if(sex==="男"){
+                 alert("你好男士");
+             }else if(sex==="女"){
+                 alert("你好女士");
+             }
+         }
+         //  测试多重if---else if 选择分支结构
+         function toEat(money){
+             if(money<=5){
+                 alert("说吃你妹");
+             }else if(money>5&&money<=10){
+                 alert("随便吃碗面");
+             }else  if(money>10&&money<=20){
+                 alert("吃完盖码饭");
+             }else  if(money>20&&money<=50){
+                 alert("吃碗干锅麻辣");
+             }else if(money>50&&money<=100){
+                alert("下馆子");
+             }else if(money>100){
+                 alert("日本料理");
+             }else if(money>100000){
+                 alert("嫁给你");
+             }
+         }
+    //    测试 switch....case相关的判断逻辑和实现
+    function   testInput(num){
+         switch(num){
+             case 0:{
+                 alert("上");
+             };
+             case 1:{
+                alert("下");
+             };
+             case 2:{
+                alert("左");
+             };
+             case 3:{
+                 alert("右");
+             }
+         }
+    }
+    //   测试输入的三个数的信息
+    function  test(num1,num2,num3){
+        if(num1==num2&&num1===num3){
+            alert("这三个数相等");
+        }else if(num1+num2+num3>1000){
+            alert("这三个数之和大于1000");
+        }else{
+            alert("这三个数之和不大于1000");
+        }
+    }
+
+    //  计算闰年
+    function   caculateYear(year){
+        if(year%4==0){
+            alert(year+"是闰年");
+        }else if(year%100==0&&year%400==0){
+            alert(year+"是闰年");
+        }
+    }
+
+      function  login(){
+           var  username=prompt("登录","情输入用户名");
+           var   password=prompt("登录","请输入密码");
+           if(username==="admin"){
+               if(password==="888888"){
+                  alert("登录成功");
+               }else{
+                  alert("密码错误");
+               }
+           }else{
+               alert("用户名不是admin,"+username+"不存在")
+           }
+      }
+
+      
+    </script>
+</body>
+</html>
