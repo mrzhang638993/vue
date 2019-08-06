@@ -17,7 +17,17 @@
     -->
     <script>
         // api(application  programming interfaces)
-        
+
+        //  统计子字符串在母字符串中出现的次数信息
+        function  testInput(str1,str2){
+            var count=0;
+            while(str1.indexof(str2)!=-1){
+                str1=str1.replace(str2,"");
+                count++;
+            }
+        }
+        //  或者是使用切割的方法实现
+       console.log (str1.splice(str2).length-1)
     </script>
 </body>
 </html>
