@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+
+
+
+    <script>
+          //匹配变量(变量需要符合相关的规范的)
+          var  regex=/^\D\w*$/; // 匹配字母数字，下划线，或者是中文等信息  \D对应的是非数字
+          var  variable="abc";
+          console.log(regex.test(variable));
+
+          // 匹配http请求信息，使用while循环进行匹配正则表达式的时候，对应的需要将正则表达式对象提取到外边的，否则的话，每一次执行创建一个正则表达式兑现，重新开始匹配的。
+          var  http="http://localhost:8080/myProject?aaw=1&bbbb=2wef&c=12ss3";
+
+          var   regex=/(([a-z_]+)=([^&]*))/g; // 正则表达式对应的需要书写到while循环的外面的。否则每一次循环对应的都会创建新的正则表达式对象的
+          while(regex.exec(http)){ 
+             // console.log("group1:"+RegExp.$0);
+              console.log("group1:"+RegExp.$1);
+              console.log("group2:"+RegExp.$2);
+              console.log("value:"+RegExp.$3);
+          } 
+
+          //   regex.test对应的是实现娇小的功能的实现的，regex.exec对应的是更为强大的功能实现的。
+          //  正则表达式对应的括号存在相关的问题实现的，从外到内对应的参数的序号不断的递增的，$1,$2,$3....
+          //  /^((sss)|(ddd)|(ccc))  $1=((sss)|(ddd)|(ccc)),$2=(sss),$3=(ddd),$4=(ccc)   
+          //   浏览器可以解析相关的html标签信息的，对应的机制可以实现相关的html标签实现操作的。对于字符串的操作而言，对应的推荐使用正则表达式实现相关的操作。
+          //  可以使用正则表达式实现相关的网页爬虫的处理和实现机制。
+          
+    </script>
+</body>
+</html>
