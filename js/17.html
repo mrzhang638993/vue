@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <!--  正则表达式，对应的是实现相关的字符串的复杂操作和实现的。实现对于字符串的复杂操作实现
+        主要的目标是对于字符串进行检索和匹配操作。
+    -->
+    <script>
+             
+              //  定义模板信息
+              // var regex=new RegExp("star@qq.com","i");// 第一个参数对应的是匹配的模式，第二个对应的是匹配的模式信息(表示的是对于大小写不敏感的字符串信息)
+             //  定义测试字符串信息
+             // var   regex=/star@qq.com/img; //  js总正则表达式的语法检验操作，其中img对应的表示的是匹配的模式的
+
+              //var  target="star@qq.com";
+              // console.log(regex.test(target));
+              //  一般的推荐使用正则表达式进行相关的正则表达式的匹配操作实现的。
+              //  正常情况下，正则表达式对应的只会匹配一次的。js的正则表达式对应的严格的区分大小写的。
+              //  正则表达式常见的使用简化操作信息：\w:[0-9a-zA-Z_]对应的实现某种程度的简化操作实现的。\d:[0-9]
+              //  下面开始检测相关的手机号码的问题。
+              var  regex=/^1\d{10}/ ;  //特殊的正则表达式，对应的使用//就可以进行相关的操作的。
+              var  target="13392112455";
+             // console.log(regex.test(target));
+              //  可以使用基于正则表达式的集合，实现相关的数据的统计操作的。需要相关的问题的实现的。正则表达式对应的需要识别相关的转移字符信息的。
+              //  字符串的复杂的操作对应的可以使用相关的正则表达式实现相关的操作的。
+
+              //  正则表达式的匹配对应的是匹配一次，对应的是在对应的字符串中匹配相关的信息的，匹配一次的话对应的是成功的
+              //  正则表达式中匹配元字符信息，对应的匹配机制是如下的。正则表达式对于字符串的匹配对应的功能是极为强大的。
+
+                var  result=Math.random()*50+(100-50); //  0-50之间的
+                // console.log(parseInt(result));
+                    
+                
+                var  parent="hello  star   hello  world";
+                var  child=/hello/g;
+                 var  count=0;
+                 //  备注  child.exec(parent) 对应的是正则表达式的匹配操作
+                while(child.exec(parent)){
+                     count++;
+                }
+               console.log(count);
+
+
+
+    </script>
+</body>
+</html>
