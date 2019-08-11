@@ -7,9 +7,68 @@
     <title>Document</title>
 </head>
 <body>
-    
-
     <!-- 学习dom的相关知识-->
-    
+    <script>
+        //  栈中的变量对应的存在变量提升的操作的，堆中对应的是不存在变量提升的操作的。
+        //  regex.test    regex.exec 的相关的知识的。API的相关学习
+          var   array=new Array();
+          array[0]=1;
+          array[1]=2;
+          array[2]=3;
+          for(item in array){
+              //console.log(array[item]);
+          }
+          var    star={
+                name:"star",
+                height:188,
+                age:30
+          }
+          for(item  in star){
+              //console.log(star[item]);
+          }
+          var  a=[1,2,3];
+          // console.log(a.concat([4,5]))
+          //元素组合操作
+          //console.log(a.join("-"));
+          //console.log(a.splice("-"))
+          // 删除和返回最后一个元素
+          //console.log(a.pop())  // 3 
+            function  getCards(){
+                var  f=["♥","♠","♣","♦"]; //  确定花色
+                var  v=["A","1","2","3","4","5","6","7","8","9","10","J","Q","K"];
+                var  cards=[];
+                var  index=0;
+                 for(var  i=0;i<f.length;i++){
+                    for(var j=0;j<v.length;j++,index++){
+                        cards[index]=f[i]+" "+v[j];
+                    }
+                 }
+                return  cards;
+            }
+            var  arr=getCards();
+            //shuffle(arr);
+            //console.log(arr);
+            //  数组的排序操作问题
+            var persons=[
+                {name:"张飞",age:30,weight:200},
+            ];
+            //  date日期对象的处理逻辑体现，可以根据月份的最后一天获取到对应的这个月的最后一天是多少的
+            
+            var  date= new Date();
+            date.setMonth(date.getMonth()+1); //  设置月份信息为下一个月。
+            date.setDate(0);  //可以获取到本月最后一天是多少？
+            console.log(date.getDate());  
+
+            //  dom文档对象模型，存在于类型中的。html被浏览器运行的时候。 dom对应的是存在于内存中的对象模型信息的。
+            //  解析html元素，通过解析相关的html元素信息转化为dom内存模型中的对象信息。dom是处于内存中的堆中的，dom对象的任意的信息的改变对应的都会触发相关的dom树的重新的渲染的，这样的话，可以使得页面可以动态的渲染操作的。
+            //  dom对应的是公司层面的内容信息的。理解为上下文的信息。
+            //  document.getElementById() 对应的是员工的编号实现员工信息的查找
+            //   document.getElementsByClassName()  对应的是首先根据部门实现识别查找
+            //   document.getElementByTagName()  对应的是实现相关的根据部门名称查找的。
+            //  dom对应的存在于堆中的，是将html文档加载到内存中形成相关的dom树的，后续的更改对应的最终会转化为内存中的dom对象的元素的操作的，操作的同时会进行动态的渲染的操作和实现的。
+            //  js的堆中可以理解为包括两个部分的，一个是dom对象的部分，一个是在js脚本中创建的对象（数组，日期对象等的相关的信息的）。
+            
+    </script>
+
 </body>
 </html>
