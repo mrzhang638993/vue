@@ -9,5 +9,40 @@ js通过操作dom对象来实现修改html页面的目标的。通过dom实现ht
 3.html的标签对应的是html的元素，bom对应的是浏览器创建和其他语言交互的文档对象模型的，对应的创建的源头是html文档的。js，php等语言都可以操作dom对象，从而实现改变html页面渲染的目标（初始的html浏览器加载完成页面就没用的，浏览器显示的是dom对象的内容的，html页面的作用是创建dom对象和显示操作的。）
 html标签对应的是静态的内容的，dom对应的是存在于内存中的动态的dom对象的操作的。
 dom是使用来操作html文档的动态的文档对象模型的。可以使用js，php等对于dom操作的。html标签在加载完成之后，对应的后续的操作都是基于dom进行操作的。
+浏览器解析操作对应的是将html文档对应的生成相关的dom文档的元素的，dom元素对应的存在相关的特性的。可以将html定义为描述的操作
+dom对应的是实际的对象的操作的。
+
+4.标签的命名规范和dom对象的名称之间的命名存在不同的，需要相关的方式才可以实现操作的。
+
+关键字和保留字对应的是不能使用来进行变量的命名操作的。object更多的反映的是存在于堆中的数据的。
+
+javascript对应的存在6中数据类型：undefined，number，boolean，function，string，object。
+
+
+typeof  只能知道对应的类型的，一般的主要是使用来检测原始数据类型。
+instanceof  
+
+
+Bom或者说dom都是基于javascript实现的相关的操作的。javascript主要包含了如下的几个部分的：javascript核心模块（对应的是实现ecmascript的相关的实现的），
+基于core上面的dom以及bom的。
+
+javascript的客户端和服务端对应的都是基于js的core实现的，浏览器客户端对应的是除了core js之外，对应的还包含dom以及bom相关的操作的。
+服务端对应的除了core js之外，对应的还包括core js上面的扩展commom js的。
+
+dom元素是基于html的标签创建的。所以对应的dom对象拥有的属性和html标签对应的属性是相似的。
+对应的所有dom元素对应的都有共性信息：例如id，class，style等共性的，还有对应的dom元素对应的还存在差异特性的。
+
+getAttribute（）可以获取到html标签上面的属性信息，对应的dom元素中是不存在相关的属性信息的。dom对象都存在getAttribute()以及相关的setAttribute()方法的。
+dom对象都有style，id，classname等的属性等的，所有的dom对象都是具备这样的类型的。
+对于api的使用，对应的是基于对象的，什么样的对象，对应的存在的是存在什么样的接口信息的。
+
+通过对于dom对象的修改，可以实现操作页面的html标签元素。实现修改dom从而完成对于页面的渲染操作实现。
+备注：dom元素中，每一个元素都是唯一的，在这个dom元素下面的话，就不可能在另外的dom元素下面的。
+
+
+
+
+
+
 
 

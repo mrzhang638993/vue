@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+     <div  id="mydiv"   ></div>
+     <a  id="myLink" href="http://www.baidu.com" >连接百度</a>
+     <img   id="myImg" src="http://www.baidu.com/img/bd_logo1.png"  >
+   <script>
+            var  mydiv=document.getElementById("mydiv"); 
+           //  alert(mydiv.id);
+           var  myLink=document.getElementById("myLink");
+           // 
+           var  myImg=document.getElementById("myImg");
+            // console.log(mydiv.id);
+            // console.log(myLink.id);
+            // console.log(myImg.id);
+            // console.log(mydiv.className);
+           //  console.log(myLink.className);
+            // console.log(myImg.className);
+            //  可以获取到原来的html标签不具备的属性信息，获取到的是dom对象的属性的。可以理解为对象的属性信息
+            // console.log(mydiv.getAttribute("href"));
+            mydiv.setAttribute("href","http://www.baidu.com");
+            console.log(mydiv.getAttribute("href"));
+
+            
+    </script>
+</body>
+</html>
