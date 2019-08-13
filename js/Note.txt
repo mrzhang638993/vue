@@ -41,6 +41,14 @@ dom对象都有style，id，classname等的属性等的，所有的dom对象都�
 
 
 
+dom中的元素只能够存在一个的，当将已知的元素加入到另外的位置的话，那么原来位置对应的元素将会消息的，对应的元素会存在于新增加的元素中的。
+
+
+BOm：对应的是浏览器对象模型。brower object  model。对应的每一个bom下面存在多个dom的。bom是在dom之上的。
+bom的核心对象是window，document的核心对象是bom，document是bom的一个对象而已，所以，存在如下的关系：
+bom对应的是集团公司，dom对应的是集团公司的一个子公司而已。
+
+
 
 
 

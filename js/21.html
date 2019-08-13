@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="boom">
+           将在5秒之后爆炸
+    </div>
+    <script>
+        //  函数回调机制  setTimeout(callback(),1000)  对应的callback对应的是回调函数，后面的1000对应的是多长时间之后执行
+       // setTimeout(function(){
+        //    console.log("hello  world");
+      //  },500);
+
+
+          //var  boom=document.getElementById("boom");
+          //setTimeout(function(){
+          //    boom.innerHTML="BOOM!"
+         // },5000)
+
+          //  定义倒计时处理信息
+         // var  i=5;
+         // function  sub(){
+          //    if(--i===0){
+          //        boom.innerHTML="BOOM!";
+          //}else{
+           //       boom.innerHTML="将在"+i+"秒之后爆炸";
+           //       setTimeout(sub,1000);
+           //   }
+         // }
+         // setTimeout(sub, 1000);
+         var  i=5;
+         var  boom=document.getElementById("boom");
+         var id=setInterval(function(){
+             i--
+             if(i===0){
+                boom.innerHTML="BOOM";
+                // 清除计时器信息
+                clearInterval(id)
+             }else{
+                 boom.innerHTML="将在"+i+"秒之后爆炸";
+             }
+         }, 1000);
+         //  setInterval：对应的是计时器的，对应的每隔多长时间执行一次的。
+
+    </script>
+</body>
+</html>

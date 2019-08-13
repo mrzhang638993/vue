@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+        function  getBirthday(date){
+            debugger;
+            var  birthday=new String(date);
+            var year=parseInt(birthday.substr(0,4));
+            //substr   第一个参数对应的是起始位置，第二个参数对应的是截取多长的字符串信息
+            var month=parseInt(birthday.substr(4,2));
+            var day=parseInt(birthday.substr(6));
+            if(month===9&&day===13){
+                console.log("today is my  birthday");
+            }  
+        }
+
+        getBirthday(19890913);
+    </script>
+</body>
+</html>
