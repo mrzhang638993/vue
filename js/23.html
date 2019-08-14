@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body> 
+    <div id="my-div">
+
+    </div>
+    <script>
+        //  dom元素的操作
+       var  myDiv= document.getElementById("my-div");
+       //  创建node节点的相关的操作的，对于dom的相关的操作都是基于dom节点的，只有dom节点才可以实现相关的dom操作的。
+       var  textNode=document.createTextNode("这是一个新的文本");
+       myDiv.appendChild(textNode);
+       //console.log(myDiv.children);  //  获取的是mydiv的子标签信息，不包含文本节点的
+       // console.log(myDiv.childNodes);  // 获取到的是mydiv的子节点信息的，包含所有的节点信息
+      //  创建子元素信息
+       var  myspan=document.createElement("span");
+       myspan.appendChild(document.createTextNode("这是一个text的span标签"));
+       console.log(myspan  instanceof Node);
+       myDiv.appendChild(myspan);
+       // console.log(typeof  myDiv);
+       //myDiv.appendChild("这是新的文本");
+       //console.log(myDiv.constructor);
+      // console.log(myDiv instanceof HTMLDivElement );
+       //console.log(myDiv instanceof Node);
+       //console.log(myDiv instanceof Object);
+       //  html元素存在继承体系的，HTMLDivElement对应的继承于Node,Node对应的继承于Object的。
+       //  jquery对应的也是基于js实现了，简化了操作dom的难度。提升了相关的灵活特性和操作的。
+       //  element.nextElementSibling  获取元素的下一个element元素节点
+       //   element.previousElementSibling  获取元素的上一个节点
+    </script>
+</body>
+</html>

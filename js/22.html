@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="my-div" class="div-class1 div-class2 div-class3"  style="border:1px solid  red "  title="这是测试div"></div>
+    <script>    
+        //console.log(document.body);
+        //console.log(document.head)
+        //console.log(typeof null)  //  对应的null对象对应的是object的，存在于堆中的数据的。instanceof可以使用来判断具体的参数的类型信息。
+       
+
+       var  myDiv=document.getElementById("my-div");
+       //console.log(myDiv.id);
+       //console.log(myDiv.className);
+       var  classArr=myDiv.className;
+       console.log(classArr.split(" ")[0]);
+      //var   arr= classArr.split(" ");
+      //for(item  in arr){
+        //  console.log(arr[item]);
+         // console.log(item);
+      //}
+
+      //  对于api的使用可以快速的提高相关的开发效率和操作的。
+
+      console.log(typeof myDiv); // object  css对应的是一个对象的。
+      console.log(myDiv.style);  // CSSStyleDeclaration 
+
+      console.log(myDiv.getAttribute("style"));
+
+      console.log(myDiv.getAttribute("id"));
+      console.log(myDiv.getAttribute("class"));
+      console.log(myDiv.getAttribute("title"));
+
+      // getAttribute  对应的获取到的是标签上的属性信息。getElementById对应的是获取到的是dom的属性等信息的。
+      //   setAttribute对应的是设置标签上的属性信息的。标签属性是string的。其他的上面的操作对应的是操作内存中的dom的。
+      myDiv.setAttribute("number",200);
+      console.log(myDiv.getAttribute("number"));
+      console.log(typeof  myDiv.getAttribute("number"));
+    </script>
+</body>
+</html>
