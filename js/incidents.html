@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <button   id="eventSource">按钮</button>
+    <div id="eventSource2">div</div>
+    <script>
+           //  直接执行console.log 可以快速的实现代码的问题的确定和查找的思路的，对应的逻辑实现就是这样的。打印输入和实处，对应的效率是更较高的效率的。
+           //  事件对应的是在发生了某些行为的时候，对应的做出的应对行为的。类似于对应的方法的。
+           //  事件的三个要素：事件源（包括dom对象，内置对象windows，document等），事件监听（监听指定的行为，后续的采用相关的回调函数执行相关的行为处理的），回调函数（事件发生的时候，对应的采取的应对行为）。
+           //   事件分类：鼠标类（onclick，ondbClick，），键盘类，其他类。
+           //  阻塞方法的定义：对应的是线程在方法是进行阻塞操作的。js中alert，prompt，confirm对应的是阻塞的，其他的都不是阻塞的方法的
+           //  javascript对应的是单线程的，基于事件监听的语言的，当线程处于阻塞状态的时候，对应的线程是无法进行后续的操作的。
+           //   上下文事件  onContentMenu  
+        document.getElementById("eventSource").onclick=function(){
+            console.log("事件源的改变触发了相关的事件信息");
+        }
+        document.getElementById("eventSource").ondblclick=function(){
+            console.log("发生了双击事件操作");
+        }
+        //  点击触发上下文事件操作 ，右键点击触发上下文事件
+        document.getElementById("eventSource").oncontextmenu=function(){
+            console.log("触发了上下文事件");
+            return  false ;  //不返回上下文信息
+        }
+        document.getElementById("eventSource2").onclick=function(){
+             console.log("div 的 click事件进行了触发操作");
+        }
+        document.getElementById("eventSource2").oncontextmenu=function(){
+            console.log("div  对应的触发了上下文事件操作信息");
+        }
+        //  对应的需要实现相关的事件的处理和实现操作的，需要进行相关的关注和操作实现的。
+
+    </script>
+</body>
+</html>
