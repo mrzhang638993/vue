@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body> 
-    <div id="my-div">
+    <div id="my-div"  onclick="alert(1);">
 
     </div>
     <script>
@@ -29,10 +29,64 @@
       // console.log(myDiv instanceof HTMLDivElement );
        //console.log(myDiv instanceof Node);
        //console.log(myDiv instanceof Object);
+       // HTMLDivElement 对应的继承Node，对应的Node继承Object相关的操作的。
        //  html元素存在继承体系的，HTMLDivElement对应的继承于Node,Node对应的继承于Object的。
        //  jquery对应的也是基于js实现了，简化了操作dom的难度。提升了相关的灵活特性和操作的。
        //  element.nextElementSibling  获取元素的下一个element元素节点
        //   element.previousElementSibling  获取元素的上一个节点
+       //myDiv.onclick=function(){
+         //  alert(2);
+       //}
+       //  dom元素的事件的优先级相较于html标签属性而言，对应的优先级级别相对而言优先级别更加的高。首先执行的是dom的事件属性操作。
+       //  不推荐使用html的属性进行相关的事件操作的。
+       // 使用原则，能够使用css实现的相关的代码，不能够使用js实现相关的代码的操作的。js主要是解决逻辑的，css主要是解决样式的操作的。
+       myDiv.onmouseover=function(){
+           myDiv.style.color="red";
+       }
+
+       myDiv.onmouseout=function(){
+           myDiv.style.color="black";
+       }
+            //  dom对应的是bom的核心的一部分的。bow还包括其他的部分：1.history历史记录；2.frames：子页面集合；3.location资源集合；4.dom文档上下文对象；
+            //   5.navigator：对应的浏览器对象；6.screen屏幕信息、
+            //  历史信息的形成对应的是url的改变的操作的。iframe对应的多个iframe都不是处于一个bowdom中的。交互非常麻烦的。
+            //  历史记录的形成对应的根本是url的改变的。使用ajax请求的的话，对应的是不存在历史记录的。历史记录的存储数量是有限制的，当数量发生变化的时候，后者会覆盖前面的内容的。
+
+            //  script脚本里面的变量和方法，对应的都是windows对象的作用域内的。默认的javascript对应的上下文是windows上下文的。
+            // window作为默认的上下文的作用域的。定义的全局变量和函数对应的都是在windows的作用域内部的。
+            //  递归对应的是不会释放内存的，settimeout对应的是不会释放内存信息的。对应的优化的方式settimeInterval对应的解决相关的定时任务的执行的。
+
+            var  s=10;
+           function  count(){
+               console.log(s--);
+               if(s===0){
+                   console.log("藏好了吗，我要开始捉人了");
+                   // 清除相关的计时器的浮动信息
+                   clearInterval(interval);
+               }
+           }
+          //var interval= setInterval(count,1000)
+          //  对应的类似的settimeout对应的还可以存在clearTimeOut的机制可以停止计时器的。
+
+          function   good(){
+              console.log("测试，你真的很好");
+              clearTimeout(test);
+          }
+          var  test=setTimeout(good,1000)
+
+          //  测试定时器实现计时器功能的操作
+          var  time=10;
+          function   many(){
+                if(time===0){
+                    console.log("计时器任务停止了");
+                   // clearTimeout(ma);
+                }else{
+                    time--;
+                    settimeout(many(),1000);
+                }
+          }
+          setTimeout(many,1000);
+          
     </script>
 </body>
 </html>
