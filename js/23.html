@@ -51,11 +51,9 @@
             //   5.navigator：对应的浏览器对象；6.screen屏幕信息、
             //  历史信息的形成对应的是url的改变的操作的。iframe对应的多个iframe都不是处于一个bowdom中的。交互非常麻烦的。
             //  历史记录的形成对应的根本是url的改变的。使用ajax请求的的话，对应的是不存在历史记录的。历史记录的存储数量是有限制的，当数量发生变化的时候，后者会覆盖前面的内容的。
-
             //  script脚本里面的变量和方法，对应的都是windows对象的作用域内的。默认的javascript对应的上下文是windows上下文的。
             // window作为默认的上下文的作用域的。定义的全局变量和函数对应的都是在windows的作用域内部的。
             //  递归对应的是不会释放内存的，settimeout对应的是不会释放内存信息的。对应的优化的方式settimeInterval对应的解决相关的定时任务的执行的。
-
             var  s=10;
            function  count(){
                console.log(s--);
@@ -67,13 +65,11 @@
            }
           //var interval= setInterval(count,1000)
           //  对应的类似的settimeout对应的还可以存在clearTimeOut的机制可以停止计时器的。
-
           function   good(){
               console.log("测试，你真的很好");
               clearTimeout(test);
           }
           var  test=setTimeout(good,1000)
-
           //  测试定时器实现计时器功能的操作
           var  time=10;
           function   many(){
@@ -86,7 +82,6 @@
                 }
           }
           setTimeout(many,1000);
-          
     </script>
 </body>
 </html>
