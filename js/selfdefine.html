@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        //  自定义事件的操作原理和实现机制    
+        //  console.log调试无法完成的话，对应的可以采用debugger进行调试的，一般的使用的是数据的输入和输出对应的效率会更加高的。
+        //   javascript对应的是单线程的，事件监听，回调机制的操作，体现的是其性能的巨大的优势特色的。
+        //  主要包括如下的集中特性信息的。
+        //  鼠标类事件：onmousedown，onmouseup，onclick，ondblclick，onmouseover，onmouseout  ,onmousemove 
+        //  键盘类事件：  onkeydown  onkeyup，onkeypress
+        //  其他类事件：   oncontextmenu   onload（加载事件源完成，入window.onload,还有document.onload机制可以实现操作的，还有对应的图片的下载img下载完成对应的也是可以触发事件的），onstatechange触发事件的相关的操作。对应的还有其他类型的事件的管理机制的
+        //  事件对应的存在事件对象的，相关的对象事件event
+        window.onload=function(){
+            //  对应的需要dom对象加载完成之后，才会进行后续的函数调用的操作的。
+           //  var  star=20;//  对应的定义在局部的函数范围之内的，函数执行完成之后，对应的变量就会销毁的操作的。
+            //  对应的是enter事件的操作的。 ui页面需要设置很多的快捷键的操作的，否则对应的用户的体验度是不高的。
+            document.onkeydown=function(event){
+                console.log(event);
+                 if(event.shiftKey){
+                     console.log("你点击了shift快捷键的");
+                 }
+                 console.log("执行了按钮点击事件的第一步操作实现");
+            }
+            document.onkeypress=function(){
+                console.log("执行了按钮事件的第二步的操作实现");
+            }
+            document.onkeyup=function(){
+                console.log("执行了按钮点击之后的弹起的操作");
+            }
+          
+        }
+        //var  star=1;  //  对应的定义的是全局变量，在程序的运行过程中，是永远的不会销毁的，对应的内存是会不断的增长的，存在很大的冲突和风险操作问题的。
+        //  windows中的事件对应的操作不是我们自己调用的，是对应的浏览器实现相关的代码调用机制的。事件是我们定义的，但是事件的具体的执行不是我们进行的操作的，是浏览器进行的，同时对应的为了使用方便的话，对应的穿件了参数的，我们可以不使用的。
+        //  开发ui的过程中，可以给指定的常用的功能设置快捷键的操作的
+
+
+    </script>
+</body>
+</html>

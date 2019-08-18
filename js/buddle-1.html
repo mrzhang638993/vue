@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div  id="container">
+        <button  id="btn">脚本button</button>
+    </div>
+    <script>
+          window.onload=function(){
+              // google浏览器对应的会将container作为全局属性存储到window中，作为全局变量使用的，对应的通过他可以得到相关的对象的值信息
+              alert(container===document.getElementById("container")); // true ，不推荐这么使用的，在其他的浏览器中不兼容的
+              container.onclick=function(){
+                  alert("container  click"); //  作用和下面的document.getElementById("container").onclick对应的事件操作是一模一样的。
+              }
+              //document.getElementById("container").onclick=function(){
+              //    alert("div  click");
+              //}
+              document.getElementById("btn").onclick=function(event){
+                  alert(window.event===event);  //  对应的逻辑是时间发生的时候，window上面的属性event对应的完成实例化，调用的时候，对应的将event传递给对应的事件处理方法
+                  alert("btn click");
+                  event.cancelBubble=true;
+              }
+              document.body.onclick=function(){
+                  alert("body onclick");
+              }
+              //  jquery对应的解决了浏览器的差异性的问题，使用浏览器进行dom的操作具有很强的特性和管理的。
+          }
+    </script>
+</body>
+</html>

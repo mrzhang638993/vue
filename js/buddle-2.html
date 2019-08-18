@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="container">
+        <button id="btn">
+
+        </button>
+    </div>
+    <script>
+        window.onload=function(){
+             //  对应的事件的执行顺序是如下的：keydown事件的冒泡----->keypress事件冒泡，
+             //  测试不要使用alert，alert对应的会阻断程序的正常执行的，对应的是单线程的关系的
+                 document.getElementById("container").onkeydown=function(){
+                       console.log("执行 container的 keydown事件");
+                 }
+                 document.getElementById("btn").onkeypress=function(){
+                     console.log(" btn 执行了 onkeypress事件的相关的操作");
+                 }
+                 document.getElementById("btn").onkeydown=function(event){
+                     console.log(" btn执行了 onkeydown事件 ");
+                    // return  false ;  //  会导致对应的元素btn的后续的堆栈事件不会触发，从而导致后续事件的冒泡是不会执行的.
+                     event.returnValue=false; //  对应的和上面的效果是一样的。
+                 }
+
+                 document.getElementById("container").onkeypress=function(){
+                     console.log("  container 执行了 onkeypress事件的相关操作");
+                 }
+
+                 document.body.onkeypress=function(){
+                     console.log("body  执行了 onkeypress 事件");
+                 }
+        } 
+    </script>
+</body>
+</html>

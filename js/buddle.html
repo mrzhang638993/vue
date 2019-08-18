@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+   <!--子标签的onclick事件对应的传递给了父标签的onclick事件，其中dom结构决定了父子关系的，不是根据位置来确定的
+      event事件的是属于dom对象的。使用event.cancelBuddle=true对应的可以解决冒泡的问题。
+   -->
+   <div onclick="alert('div click')">
+       <span  onclick="alert('span click')">
+           <button onclick="alert('button click');event.cancelBubble=true">测试冒泡事件
+           </button>
+       </span>
+   </div>
+    <script>
+         //  事件冒泡的机制对应的是子标签的事件发生会触发父标签相关的事件，建议使用脚本的放肆绑定事件的，不要使用属性的方式实现属性绑定的。
+         
+         
+    </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        window.onload=function(){
+            document.onwheel=function(event){
+               // console.log(event  instanceof Event);
+                //console.log(event  instanceof  WheelEvent);
+                //console.log(event  instanceof  MouseEvent);
+                //   wheelEvent对应的是继承来自MouseEvent，对应的MouseEvent对应的继承来自于Event的。
+                console.log(event);
+                if(event.wheelDelta<0){
+                    console.log("滚轮向下滚动了");
+                }else if(event.wheelDelta>0){
+                    console.log("滚轮向上滚动了");
+                }
+            }
+        }
+
+        //  冒泡对应的是从下往上的操作的。
+    </script>
+</body>
+</html>

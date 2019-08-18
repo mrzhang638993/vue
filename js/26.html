@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <button id="myButton"  onclick="alert(1)">
+           测试按钮
+    </button>
+    <script>
+         //  给一个dom绑定多个程序实现相关的程序操作.k
+         var   myButton= document.getElementById("myButton");
+         //  addEventListener 对应的可以增加多个事件操作的。可以并行的增加多个事件监听的机制的，可以有效的防止事件的覆盖操作的
+        //  并行的执行多个事件，其中传递的事件的顺序是一样的操作，对应的事件的event是相同的事件的。可以实现一个事件源的多个事件之间的数据的交互操作
+         myButton.addEventListener("click",function(event){
+             console.log(2);
+         })
+         myButton.addEventListener("click",function(event){
+             console.log(3);
+         })
+         myButton.addEventListener("click",function(event){
+             console.log(4);
+         })
+         //   可以对于单个的事件源设置多个事件的监听操作实现。插件乐意实现自定的事件操作和实现的。需要书写大量的自定义事件实现相关的组件的操作的。
+         //  需要执行相关的自定义事件的相关的操作的，自定义事件和组件的操作对应的是实现高级工工程师对应的必备的条件处理逻辑和实现的。
+         //  代码的优化操作的，对应的最简答的操作是提取区相关的组件出来实现公用的操作和实现管理的特性的。
+         //  备注：http的相关的代码以及返回对应的是请求的正常信息的，不是存在异常的操作的，对应的是封装了相关的反应数值信息的。判断的时候需要进行相关的逻辑判断的。不存在异常的情况的。
+         //  备注：当存在多个客户端的时候，每一个对应的客户端对应的都是存在内置的浏览器程序的。和笔记本等的浏览器是一样的。
+         // 应用服务器给前端浏览器传递数据的时候，对应的都是存在有压缩算法的，压缩算法的运用可以减少网络自愿的额传递数量的。
+    </script>
+</body>
+</html>
